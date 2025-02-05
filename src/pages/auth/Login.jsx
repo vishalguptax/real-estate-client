@@ -1,5 +1,62 @@
+import React from "react";
+import { useFormik} from 'formik';
+
+const initialValues = {
+  email: "",
+  password: ""
+}
+
+
 const Login = () => {
-  return <div>Login</div>;
+
+  const {values, handleChange, handleSubmit} = useFormik({
+    initialValues : initialValues,
+    onSubmit
+     : (values)=>{
+      // console.log(values,"values")
+       
+
+    }
+  })
+
+  return (
+    <><form onSubmit={handleSubmit} >
+
+      <div className="w-full h-screen flex items-center justify-center bg-gray-300">
+        <div className=" p-6">
+          <h1 className="text-center mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+            User Login
+          </h1>
+          <div className="flex flex-col justify-center items-center">
+            <input
+              type="text"
+              name="email"
+              placeholder="Enter email id"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 m-2"
+              onChange={handleChange}
+              value = {values.email}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              onChange={handleChange}
+              value = {values.password}
+            />
+            
+            <button
+              type="submit"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 m-2"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    </>
+  );
 };
 
 export default Login;

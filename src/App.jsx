@@ -1,11 +1,13 @@
 import Layout from "./components/Layout";
+import Login from "./pages/auth/Login";
 
 function App() {
   
 
   return (
     <>
-    <Layout></Layout>
+    {/* <Layout></Layout> */}
+    <Login/>
     </>
   );
 }
