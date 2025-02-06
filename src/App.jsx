@@ -1,11 +1,13 @@
 import Layout from "./components/Layout";
+import Profile from "./pages/Profile";
 
 function App() {
-  
+
 
   return (
     <>
-    <Layout></Layout>
+      <Layout></Layout>
+      <Profile></Profile>
     </>
   );
 }

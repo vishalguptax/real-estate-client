@@ -1,4 +1,10 @@
 @import "tailwindcss";
 
-body{
+body {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    display: none;
 }
