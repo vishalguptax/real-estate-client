@@ -13,7 +13,7 @@ const Login = () => {
     initialValues : initialValues,
     onSubmit
      : (values)=>{
-      // console.log(values,"values")
+      console.log(values,"values")
        
 
     }
@@ -22,9 +22,9 @@ const Login = () => {
   return (
     <><form onSubmit={handleSubmit} >
 
-      <div className="w-full h-screen flex items-center justify-center bg-gray-300">
-        <div className=" p-6">
-          <h1 className="text-center mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+      <div className="w-full h-screen flex items-center justify-center bg-[url(https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]">
+        <div className="isolate aspect-video w-96 rounded-xl bg-white/20  ring-2 shadow-xl ring-black/20 p-4">
+          <h1 className="text-center p-4">
             User Login
           </h1>
           <div className="flex flex-col justify-center items-center">
@@ -32,7 +32,7 @@ const Login = () => {
               type="text"
               name="email"
               placeholder="Enter email id"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 m-2"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 m-4"
               onChange={handleChange}
               value = {values.email}
             />
@@ -40,7 +40,7 @@ const Login = () => {
               type="password"
               name="password"
               placeholder="password"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4"
               onChange={handleChange}
               value = {values.password}
             />
