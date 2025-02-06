@@ -68,6 +68,7 @@ const Layout = () => {
       <footer className="text-black text-center h-[8%] flex items-center justify-center">
         <p>&copy; {new Date().getFullYear()} EstateHub. All rights reserved.</p>
       </footer>
+
     </div>
   );
 };

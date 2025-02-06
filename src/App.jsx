@@ -7,6 +7,7 @@ import Profile from "./pages/Profile/Profile.jsx";
 import Register from "./pages/auth/Register.jsx"
 import Login from "./pages/auth/Login.jsx";
 
+
 function App() {
   return (
     <Router>
