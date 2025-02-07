@@ -26,7 +26,7 @@ import SinglePage from './pages/singlepage/singlepage'
          </Routes>
       </>
     </Router>
-  );
+   )
 
 }
 
