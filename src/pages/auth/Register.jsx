@@ -41,7 +41,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="image-bg">
+      <div className="image-bg h-[calc(100vh-100px)]">
         <div className="register-form">
           <h1 className="register-heading">Register!</h1>
           <form

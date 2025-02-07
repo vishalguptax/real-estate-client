@@ -6,9 +6,9 @@ const Layout = () => {
   const user = false;
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-[100vh]  ">
       {/* Navbar */}
-      <nav className="flex items-center justify-between h-[60px] px-8 bg-transparent">
+      <nav className="flex items-center justify-between h-[50px] px-8 bg-transparent">
         <div className="flex items-center space-x-4">
           <img src="/logo.png" alt="EstateHub Logo" className="h-8 w-8" />
           <h1 className="text-xl font-bold">EstateHub</h1>
@@ -18,6 +18,8 @@ const Layout = () => {
           <Link to="/" className="text-black hover:text-gray-600">Home</Link>
           <Link to="/about" className="text-black hover:text-gray-600">About</Link>
           <Link to="/contact" className="text-black hover:text-gray-600">Contact</Link>
+          <Link to="/singlepage" className="text-black hover:text-gray-600">Singlepage</Link>
+
 
         </div>
 
@@ -60,14 +62,11 @@ const Layout = () => {
       </nav>
 
       {/* Main Content */}
-      <main className=" h-[calc(100vh-150px)] overflow-hidden bg-gray-100 ">
+      <main className="   bg-gray-100">
         <Outlet />
       </main>
 
-      {/* Footer */}
-      <footer className="text-black text-center h-[50px] flex items-center justify-center ">
-        <p>&copy; {new Date().getFullYear()} EstateHub. All rights reserved.</p>
-      </footer>
+     <div className="">footer</div>
 
     </div>
   );
