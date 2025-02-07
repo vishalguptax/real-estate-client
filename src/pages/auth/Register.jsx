@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import RegisterSchema from "./schema/registerSchema";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { Link } from "react-router-dom";
 
 const onSubmit = (values, actions) => {
   console.log("Form data: ", values);
@@ -83,7 +84,7 @@ const Register = () => {
                 }`}
                 id="email"
                 type="email"
-                placeholder="Please enter your email..."
+                placeholder="example@mail.com"
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -195,7 +196,7 @@ const Register = () => {
             <button className="register-button" type="submit">
               Register!
             </button>
-            <p className="text-white">Already have an account? Sign In</p>
+            <p className="text-white">Already have an account?<Link to="/Login" className="hover:text-black"> Sign In </Link></p>
           </form>
         </div>
       </div>
