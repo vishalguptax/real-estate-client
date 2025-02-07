@@ -8,14 +8,14 @@ const Layout = () => {
   return (
     <div className="flex flex-col h-[100vh]  ">
       {/* Navbar */}
-      <nav className="flex items-center justify-between h-[50px] px-8 bg-transparent">
+      <nav className="flex items-center justify-between h-[50px] px-8 bg-blue-100">
         <div className="flex items-center space-x-4">
           <img src="/logo.png" alt="EstateHub Logo" className="h-8 w-8" />
           <h1 className="text-xl font-bold">EstateHub</h1>
         </div>
 
-        <div className="hidden md:flex space-x-15">
-          <Link to="/" className="text-black hover:text-gray-600">Home</Link>
+        <div className="hidden md:flex space-x-15 font-xl">
+          <Link to="/" className="text-black  hover:text-gray-600">Home</Link>
           <Link to="/profile" className="text-black hover:text-gray-600">Profile</Link>
           <Link to="/singlepage" className="text-black hover:text-gray-600">Singlepage</Link>
         </div>
@@ -34,7 +34,7 @@ const Layout = () => {
             <>
               <Link
                 to="/login"
-                className="px-4 py-2 hover:scale-105 transition hidden md:block"
+                className="px-4 py-2 hover:scale-105 transition hidden md:block "
               >
                 Sign in
               </Link>
@@ -97,7 +97,7 @@ const Layout = () => {
      
 
       {/* Footer */}
-      <footer className="text-black text-center flex items-center justify-center ">
+      <footer className="text-black text-center h-[50px] flex items-center justify-center bg-blue-100 ">
         <p>&copy; {new Date().getFullYear()} EstateHub. All rights reserved.</p>
       </footer>
 

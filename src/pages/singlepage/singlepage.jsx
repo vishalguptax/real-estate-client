@@ -1,13 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { singlePostData, userData } from "../../components/Dummydata";
 import Slider from "../Slider/Slider";
 
 function SinglePage() {
+  const navigate=useNavigate();
+
   return (
-    <div className="flex flex-col md:flex-row h-full">
+    <div className="flex flex-col md:flex-row h-[calc(100vh-100px)]">
 
       {/* Details Section */}
       <div className="flex-3 h-full  md:mb-12">
-        <div className="pr-12 lg:pr-5 md:pr-0">
+        <div className="p-4 lg:pr-5 md:pr-0">
           <Slider images={singlePostData.images} />
           <div className="mt-6 ">
             <div className="flex justify-between flex-col sm:flex-row gap-5">
@@ -26,15 +29,15 @@ function SinglePage() {
                 <span>{userData.name}</span>
               </div>
             </div>
-            <div className="mt-12 text-gray-600 leading-5">{singlePostData.description}</div>
+            <div className="mt-5 text-gray-600 ">{singlePostData.description}</div>
           </div>
         </div>
       </div>
 
       {/* Features Section */}
-      <div className="flex-2 bg-pink-100 h-full  md:mb-12 px-5 md:px-8 flex flex-col gap-5">
-        <p className="font-bold text-lg">General</p>
-        <div className="bg-white p-3 rounded-lg flex flex-col gap-5">
+      <div className="flex-2 h-full md:mb-10 px-3 md:px-8 flex flex-col gap-4">
+        <p className="font-bold text-lg p-2">General</p>
+        <div className="bg-white p-5 rounded-lg flex flex-col gap-5">
           <Feature icon="/utility.png" title="Utilities" desc="Tenant is responsible" />
           <Feature icon="/pet.png" title="Pet Policy" desc="Pets Allowed" />
           <Feature icon="/fee.png" title="Property fees" desc="30 Million" />
@@ -48,7 +51,7 @@ function SinglePage() {
         </div>
 
         <p className="font-bold text-lg">Nearby Places</p>
-        <div className="bg-white p-3 rounded-lg flex justify-between">
+        <div className="bg-white p-2 rounded-lg flex justify-between">
           <Feature icon="/school.png" title="School" desc="1 km away" />
           <Feature icon="/bus.png" title="Bus Stop" desc="200 m away" />
           <Feature icon="/restaurant.png" title="Restaurant" desc="100 m away" />
@@ -58,7 +61,7 @@ function SinglePage() {
         {/* <div className="w-full h-48"> <Map items={[singlePostData]} /> </div> */}
 
         <div className="flex justify-between gap-5">
-          <button className="flex items-center gap-2 px-5 py-2 border-1 rounded-xl bg-amber-200 hover:bg-amber-100">
+          <button className="flex items-center gap-2 px-5 py-2 border-1 rounded-xl bg-amber-200 hover:bg-amber-100" onClick={()=>navigate("/profile")}>
             <img src="/chat.png" alt="Chat" className="w-4 h-4" /> Send a Message
           </button>
           <button className="flex items-center gap-2 px-5 py-2 border-1 rounded-xl bg-amber-200 hover:bg-amber-100">
