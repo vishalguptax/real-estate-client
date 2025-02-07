@@ -1,1 +1,45 @@
 @import "tailwindcss";
+
+
+body {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+
+.image-bg {
+    @apply flex justify-center p-12 h-dvh w-full 
+    bg-[url(https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)];  
+}
+
+
+    
+
+
+.register-form {
+    @apply w-full max-w-md bg-gray-400/60 p-3  rounded-lg shadow-lg h-fit;
+}
+
+.register-heading{
+    @apply text-center text-white text-2xl font-bold my-2;
+}
+.register-label{
+    @apply text-black block font-medium;
+}
+.register-button{
+    @apply w-full my-3 p-2 rounded-lg bg-blue-500 hover:bg-yellow-600 text-white font-semibold;
+}
+.register-input{
+    @apply w-full p-2 rounded-lg bg-amber-50 text-black border;
+}
+.register-div-input{
+    @apply  flex p-0.5 gap-0.5 flex-col;
+}
+
+.error-message{
+    @apply font-serif text-red-900 text-sm;
+}
