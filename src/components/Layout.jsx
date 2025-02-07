@@ -8,7 +8,7 @@ const Layout = () => {
   return (
     <div className="flex flex-col h-screen">
       {/* Navbar */}
-      <nav className="flex items-center justify-between h-[12%] px-8 bg-transparent">
+      <nav className="flex items-center justify-between h-[60px] px-8 bg-transparent">
         <div className="flex items-center space-x-4">
           <img src="/logo.png" alt="EstateHub Logo" className="h-8 w-8" />
           <h1 className="text-xl font-bold">EstateHub</h1>
@@ -24,7 +24,7 @@ const Layout = () => {
         <div className="flex items-center gap-4">
           {user ? (
             <div className="flex items-center gap-4 font-bold">
-             
+
               <Link to="/profile" className="relative px-4 py-2 bg-yellow-400 rounded-lg">
                 Profile
               </Link>
@@ -60,14 +60,15 @@ const Layout = () => {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1 bg-gray-100 p-6">
+      <main className=" h-[calc(100vh-150px)] overflow-hidden bg-gray-100 ">
         <Outlet />
       </main>
 
       {/* Footer */}
-      <footer className="text-black text-center h-[8%] flex items-center justify-center">
+      <footer className="text-black text-center h-[50px] flex items-center justify-center ">
         <p>&copy; {new Date().getFullYear()} EstateHub. All rights reserved.</p>
       </footer>
+
     </div>
   );
 };
