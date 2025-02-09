@@ -1,153 +1,156 @@
 import React from "react";
 import { useState } from "react";
-import { listData } from "../lib/dummy";
+import { useContext } from 'react';
+import { DataContext }  from './DataContext'
 import Card from "./Card";
 
 const Filter = () => {
-  const data = listData;
-  const [enterLocation, setEnterLocation] = useState("");
-  const [filteredData, setFiltereData] = useState(data);
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setEnterLocation(e.target.value);
-  };
+  const { data} = useContext(DataContext);
+  const[minValue, setMinValue] = useState(0);
+  const[maxValue, setMaxValue] = useState(0);
+  const[bedRoom, setBedRoom] = useState(0);
+  const [city, setCity] = useState("");
+  const [filteredData, setFilteredData] = useState([...data])
 
   const searchResult = () => {
-    const result = data.filter(
-      (item) => item.address.toLowerCase() == enterLocation.toLocaleLowerCase()
-    );
-    const result2 = data.filter((item) => item);
-    if (result.length > 0) {
-      {
-        result?.map((item) => setFiltereData(result));
-      }
-    } else {
-      alert("Data not found");
+     let result = [...data];
+
+     if( city.trim() !== "" ) {
+        result = result.filter((item) =>
+          item.address.toLowerCase().includes(city.toLowerCase())
+      );
+     }
+
+     if(minValue > 0) {
+        result = result.filter((item) => item.price >= minValue);
+     }
+
+     if (maxValue > minValue && maxValue > 0) {
+      result = result.filter((item) => item.price <= maxValue);
     }
+
+    if (bedRoom > 0) {
+      result = data.filter((item) => item.bedroom === bedRoom);
+    }
+
+    if (result.length === 0) {
+      alert("No results found");
+    }
+
+    setFilteredData(result);
   };
+  
+
+
 
   return (
-    <div className=" h-full">
-      <div className="filter bg-white p-6 rounded-lg shadow-md w-full max-w-3xl mx-auto">
-        {/* Heading */}
-        <div className="mb-4">
-          <h1 className="text-xl font-semibold text-gray-700">
-            Search results for <b className="text-black">London</b>
-          </h1>
+    <div className="flex flex-col gap-3 p-4">
+      <h1 className="text-xl font-light">
+        Search result for <b>London</b>
+      </h1>
+
+      {/* Location Input */}
+      <div className="flex flex-col gap-2">
+        <label htmlFor="city" className="text-xs">Location</label>
+        <input
+          type="text"
+          id="city"
+          name="city"
+          value={city}
+          placeholder="City Location"
+          className="w-full p-2 border border-gray-300 rounded-md text-sm"
+          onChange={(e) => {
+             e.preventDefault();
+             setCity(e.target.value)
+          }}
+        />
+      </div>
+
+      {/* Filters */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        {/* Type */}
+        <div className="flex flex-col gap-1">
+          <label htmlFor="type" className="text-xs">Type</label>
+          <select id="type" name="type" className="w-full p-2 border border-gray-300 rounded-md text-sm">
+            <option value="buy">Buy</option>
+            <option value="rent">Rent</option>
+          </select>
         </div>
 
-        {/* Location Input */}
-        <div className="mb-4">
-          <label htmlFor="city" className="text-sm font-medium text-gray-600">
-            Location
-          </label>
+        {/* Property */}
+        <div className="flex flex-col gap-1">
+          <label htmlFor="property" className="text-xs">Property</label>
+          <select id="property" name="property" className="w-full p-2 border border-gray-300 rounded-md text-sm">
+            <option value="apartment">Apartment</option>
+            <option value="house">House</option>
+            <option value="land">Land</option>
+          </select>
+        </div>
+
+        {/* Min Price */}
+        <div className="flex flex-col gap-1">
+          <label htmlFor="minPrice" className="text-xs">Min Price</label>
           <input
-            type="text"
-            id="city"
-            name="city"
-            placeholder="City Location"
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-lg mt-1 focus:ring-2 focus:ring-blue-400"
+            type="number"
+            id="minPrice"
+            name="minPrice"
+            placeholder="Any"
+            value={minValue}
+            className="w-full p-2 border border-gray-300 rounded-md text-sm"
+            onChange = { (e) => {
+               e.preventDefault();
+               setMinValue(Number(e.target.value));
+            }
+            }
           />
         </div>
 
-        {/* Filter Options */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          <div className="item text-sm">
-            <label htmlFor="type" className="block text-gray-600 font-medium">
-              Type
-            </label>
-            <select
-              name="type"
-              id="type"
-              className="w-full p-2 border border-gray-300 rounded-lg mt-1 focus:ring-2 focus:ring-blue-400"
-            >
-              <option value="buy">Buy</option>
-              <option value="rent">Rent</option>
-            </select>
-          </div>
-
-          <div className="item text-sm">
-            <label
-              htmlFor="property"
-              className="block text-gray-600 font-medium"
-            >
-              Property
-            </label>
-            <select
-              name="property"
-              id="property"
-              className="w-full p-2 border border-gray-300 rounded-lg mt-1 focus:ring-2 focus:ring-blue-400"
-            >
-              <option value="apartment">Apartment</option>
-              <option value="house">House</option>
-              <option value="land">Land</option>
-            </select>
-          </div>
-
-          <div className="item text-sm">
-            <label
-              htmlFor="minPrice"
-              className="block text-gray-600 font-medium"
-            >
-              Min Price
-            </label>
-            <input
-              type="number"
-              id="minPrice"
-              name="minPrice"
-              placeholder="Any"
-              min="0"
-              max="1200"
-              value={minPrice}
-              onChange={(e) => {
-                e.preventDefault();
-                setMinPrice(e.target.value);
-              }}
-              onKeyDown={(e) => e.key === "-"  && e.preventDefault()}
-              className="w-full p-2 border border-gray-300 rounded-lg mt-1 focus:ring-2 focus:ring-blue-400"
-            />
-          </div>
-
-          <div className="item text-sm">
-            <label
-              htmlFor="maxPrice"
-              className="block text-gray-600 font-medium"
-            >
-              Max Price
-            </label>
-            <input
-              type="number"
-              id="maxPrice"
-              name="maxPrice"
-              placeholder="Any"
-              value={maxPrice}
-              onChange={(e) => {
-                e.preventDefault();
-                setMaxPrice(e.target.value);
-              }}
-              className="w-full p-2 border border-gray-300 rounded-lg mt-1 focus:ring-2 focus:ring-blue-400"
-            />
-          </div>
-
-          <div className="flex items-end">
-            <button
-              onClick={searchResult}
-              className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg flex items-center justify-center w-full transition"
-            >
-              <img src="/search.png" alt="Search" className="w-5 h-5" />
-            </button>
-          </div>
+        {/* Max Price */}
+        <div className="flex flex-col gap-1">
+          <label htmlFor="maxPrice" className="text-xs">Max Price</label>
+          <input
+            type="number"
+            id="maxPrice"
+            name="maxPrice"
+            placeholder="Any"
+            value={minValue}
+            className="w-full p-2 border border-gray-300 rounded-md text-sm"
+            onChange = {(e) => {
+               e.preventDefault();
+               setMaxValue(Number(e.target.value));
+            }}
+          />
         </div>
+
+        {/* Bedroom */}
+        <div className="flex flex-col gap-1">
+          <label htmlFor="bedroom" className="text-xs">Bedroom</label>
+          <input
+            type="text"
+            id="bedroom"
+            name="bedroom"
+            placeholder="Any"
+            value={bedRoom}
+            onChange={(e) => {
+              e.preventDefault();
+              setBedRoom(Number(e.target.value));
+            }}
+            className="w-full p-2 border border-gray-300 rounded-md text-sm"
+          />
+        </div>
+
+        {/* Search Button */}
+        <button onClick = {searchResult}className="w-full p-2 bg-yellow-400 rounded-lg flex justify-center items-center hover:bg-yellow-500 transition cursor-pointer">
+          <img src="/search.png" alt="Search" className="w-6 h-6" />
+        </button>
       </div>
 
-      <div className="max-h-[500px] overflow-y-auto space-y-4">
-        {filteredData?.map((item) => (
-          <Card key={item.id} item={item}></Card>
-        ))}
+      <div className="pb-40 gap-10">
+          {filteredData.length > 0 ? (
+             filteredData.map((item) => <Card key = {item.id} item={item} />)
+          ) : (
+            <p className="text-sm text-gray-500">No result found.</p>
+          )}
       </div>
     </div>
   );

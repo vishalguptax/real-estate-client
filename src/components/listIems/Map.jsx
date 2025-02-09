@@ -17,7 +17,7 @@ const Map = () => {
   return (
     <MapContainer center={defaultCenter} zoom={13} style={{ height: "500px", width: "100%" }}>
       {/* OpenStreetMap Layer */}
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"  />
 
       {/* Marker with Popup */}
          {data?.map((item) => (

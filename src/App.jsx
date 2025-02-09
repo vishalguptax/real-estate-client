@@ -7,12 +7,14 @@ import Profile from "./pages/Profile/Profile.jsx";
 import Register from "./pages/auth/Register.jsx"
 import Login from "./pages/auth/Login.jsx";
 import ListItem from "./components/listIems/ListItem.jsx";
+import DataProvider from "./components/listIems/DataContext.jsx";
 
 
 function App() {
   return (
     <Router>
       <>
+       <DataProvider>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
@@ -21,9 +23,12 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+        
             <Route path="/list" element={<ListItem></ListItem>}></Route>
+            
           </Route>
         </Routes>
+        </DataProvider>
       </>
     </Router>
 
