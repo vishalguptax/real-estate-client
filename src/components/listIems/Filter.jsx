@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useState } from "react";
 import { useContext } from 'react';
 import { DataContext }  from './DataContext'
@@ -30,7 +30,7 @@ const Filter = () => {
     }
 
     if (bedRoom > 0) {
-      result = data.filter((item) => item.bedroom === bedRoom);
+      result = result.filter((item) => item.bedroom === bedRoom);
     }
 
     if (result.length === 0) {
@@ -97,8 +97,7 @@ const Filter = () => {
             placeholder="Any"
             value={minValue}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
-            onChange = { (e) => {
-               e.preventDefault();
+            onChange = { (e) => { 
                setMinValue(Number(e.target.value));
             }
             }
@@ -114,9 +113,9 @@ const Filter = () => {
             name="maxPrice"
             placeholder="Any"
             value={minValue}
+            max = {100000}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
             onChange = {(e) => {
-               e.preventDefault();
                setMaxValue(Number(e.target.value));
             }}
           />
@@ -132,7 +131,6 @@ const Filter = () => {
             placeholder="Any"
             value={bedRoom}
             onChange={(e) => {
-              e.preventDefault();
               setBedRoom(Number(e.target.value));
             }}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"

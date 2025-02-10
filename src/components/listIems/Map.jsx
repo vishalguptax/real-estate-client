@@ -1,7 +1,4 @@
 import { MapContainer, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-
-// Fix for default marker icon issue in Leaflet + React
 
 import { listData } from "../lib/dummy";
 import MapLocation from "./MapLocation";
@@ -15,7 +12,7 @@ const Map = () => {
     <MapContainer
       center={defaultCenter}
       zoom={13}
-      style={{ height: "500px", width: "100%" }}
+      className="h-[300px] w-[100%] md:h-[300px] md:w-[80%] md:p-2"
     >
       {/* OpenStreetMap Layer */}
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
