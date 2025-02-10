@@ -6,6 +6,7 @@ import Profile from "./pages/Profile/Profile.jsx";
 import Register from "./pages/auth/Register.jsx"
 import Login from "./pages/auth/Login.jsx";
 import ProtectedRoutes from "./pages/auth/ProtectedRoutes.jsx";
+import ListItem from './components/listIems/ListItem.jsx'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             
             <Route path="/register" element={<Register/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/listItem" element={<ListItem/>}/>
           </Route>
         </Routes>
      

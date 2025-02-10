@@ -21,7 +21,7 @@ const Layout = () => {
           <Link to="/" className="text-black hover:text-gray-600">
             Home
           </Link>
-          <Link to="/about" className="text-black hover:text-gray-600">
+          <Link to="/" className="text-black hover:text-gray-600">
             About
           </Link>
           <Link to="/contact" className="text-black hover:text-gray-600">
@@ -76,7 +76,7 @@ const Layout = () => {
         </div>
 
         {open && (
-          <div className="absolute top-0 right-0 w-1/2 h-screen bg-black text-white flex flex-col items-center justify-center text-lg transition-transform transform translate-x-0">
+          <div className="absolute top-0 right-0 w-1/2 h-screen z-999 bg-black text-white flex flex-col items-center justify-center text-lg transition-transform transform translate-x-0">
             <button
               className="absolute top-5 right-5 text-white text-3xl"
               onClick={() => setOpen(false)}

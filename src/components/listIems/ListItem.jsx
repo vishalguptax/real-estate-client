@@ -19,7 +19,7 @@ const ListItem = () => {
         </div>
       </div>
       {/* mapContainer     */}
-      <div className="flex-[2]  bg-[#fcf5f3] md:flex-1 hidden md:block">
+      <div className="flex-[2]  bg-[#fcf5f3] md:flex-1 ">
         <Map />
       </div>
     </div>
