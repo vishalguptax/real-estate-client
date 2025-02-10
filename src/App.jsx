@@ -10,9 +10,9 @@ import ListItem from "./components/listIems/ListItem";
 import SinglePage from "./pages/singlepage/singlepage";
 
 
+
 function App() {
   return (
-     
     <Routes>
       <Route element={<Layout />}>
         <Route element={<ProtectedRoutes />}>
@@ -26,6 +26,7 @@ function App() {
         <Route path="/login" element={<Login />} />
       </Route>
     </Routes>
+
   );
 }
 
