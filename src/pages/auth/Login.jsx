@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { LoginSchema } from "./schema/loginSchema";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+
 
 const initialValues = {
   email: "",
@@ -8,6 +13,12 @@ const initialValues = {
 };
 
 const Login = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const navigate = useNavigate("");
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible((prev) => !prev);
+  };
 
   const { values,errors,touched, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
@@ -23,10 +34,11 @@ const Login = () => {
         let verifyVal = getDetails[i];
         if(verifyVal.email === values.email && verifyVal.password ===values.password){
           localStorage.setItem("loggedInUser",JSON.stringify(verifyVal))
+          navigate("/")
           alert("login successful")
           break;
         }
-        if(!loginSuccessful){
+        if(!loginSuccessful) {
           alert("password invalid")
         }
       }
@@ -41,7 +53,7 @@ const Login = () => {
             <h1 className="text-center p-4">User Login</h1>
             <div className="flex flex-col justify-center items-center">
               <input
-                type="text"
+                type="email"
                 name="email"
                 placeholder="Enter email id"
                 className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-4 
@@ -49,13 +61,16 @@ const Login = () => {
                 onChange={handleChange}
                 value={values.email}
               />
+              
               <div className="">
               {errors.email && touched.email && (
                 <p className="text-red-500 text-sm">{errors.email} </p>
               )}
               </div>
+              <div className=" w-full relative">
+
               <input
-                type="password"
+                type={passwordVisible ? "text" : "password"}
                 name="password"
                 placeholder="password"
                 className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-4
@@ -63,13 +78,22 @@ const Login = () => {
                 onChange={handleChange}
                 value={values.password}
               />
+              <i
+                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                onClick={togglePasswordVisibility}
+              >
+                <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} />
+              </i>
+              <div className="">
               {errors.password && touched.password && (
                 <p className="text-red-500 text-sm">{errors.password} </p>
               )}
+              </div>
+              </div>
 
               <button
                 type="submit"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 m-4"
+                className="login-button m-4"
               >
                 Login
               </button>
