@@ -21,11 +21,10 @@ const RegisterSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password"), null], "Password must match")
     .required("Required"),
-  mobileNumber: yup
-    .string()
-    .min(11)
-    .matches(/^\+?\d{1,3}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/)
-    .required("Invalid Mobile Number"),
-});
+    mobileNumber: yup
+      .string()
+      .matches(/^\d{10}$/, "Should be exactly 10 digits")
+      .required("Invalid Mobile Number"),
+  });
 
 export default RegisterSchema;
