@@ -17,7 +17,7 @@ function Home() {
           </h1>
           <p className="mt-4 text-sm sm:text-lg md:text-xl lg:text-2xl text-white font-semibold max-w-2xl">
             Find the perfect property that fits your lifestyle and budget.
-            Whether you're looking to buy, sell, or rent, we make the process
+            Whether you&apos;re looking to buy, sell, or rent, we make the process
             simple and hassle-free.
           </p>
         </div>

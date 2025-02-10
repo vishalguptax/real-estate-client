@@ -1,4 +1,3 @@
-import React from "react";
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -14,8 +13,9 @@ const customIcon = new L.Icon({
   iconAnchor: [15, 45],
 });
 
-const MapLocation = ({ item }) => {
-  if (!item.latitude || !item.longitude) return null; // Prevent errors if location is missing
+const MapLocation = ({item}) => {
+  
+  if (!item?.latitude || !item?.longitude) return null; // Prevent errors if location is missing
 
   return (
     <Marker position={[item.latitude, item.longitude]} icon={customIcon}>
@@ -29,6 +29,7 @@ const MapLocation = ({ item }) => {
             💰 ${item.price}
           </p>
         </div>
+        console.log(item);
       </Popup>
     </Marker>
   );
