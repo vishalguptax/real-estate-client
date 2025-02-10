@@ -71,7 +71,7 @@ const Layout = () => {
         {/* Mobile Menu */}
         <div className="sm:hidden">
           <button onClick={() => setOpen(!open)}>
-            <img src="/public/menu.png" alt="Menu" className="w-9 h-9" />
+            <img src="/menu.png" alt="Menu" className="w-9 h-9" />
           </button>
         </div>
 
