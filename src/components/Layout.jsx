@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { useAuth } from "../pages/auth/AuthContext";
 
 const Layout = () => {
   const [open, setOpen] = useState(false);
-  const user = false;
+  // const [user, setUser] = useState(null);
+  const { user, logout } = useAuth();
+
+  // useEffect(()=>{
+  //   const storedUser = JSON.parse(localStorage.getItem("loggedInUser"))
+  //   setUser(storedUser)
+  // },[user])
+
+  // const handleLogout =()=>{
+  //   localStorage.removeItem("loggedInUser")
+  //   setUser(null)
+  // }
 
   return (
     <div className="flex flex-col h-[100vh]  ">
@@ -15,9 +27,15 @@ const Layout = () => {
         </div>
 
         <div className="hidden md:flex space-x-15 font-xl">
-          <Link to="/" className="text-black  hover:text-gray-600">Home</Link>
-          <Link to="/profile" className="text-black hover:text-gray-600">Profile</Link>
-          <Link to="/singlepage" className="text-black hover:text-gray-600">Singlepage</Link>
+          <Link to="/" className="text-black  hover:text-gray-600">
+            Home
+          </Link>
+          <Link to="/profile" className="text-black hover:text-gray-600">
+            Profile
+          </Link>
+          <Link to="/singlepage" className="text-black hover:text-gray-600">
+            Singlepage
+          </Link>
         </div>
 
         <div className="flex items-center gap-4">
@@ -28,6 +46,14 @@ const Layout = () => {
                 className="relative px-4 py-2 bg-yellow-400 rounded-lg"
               >
                 Profile
+              </Link>
+              <Link
+                to="/login"
+                className="relative px-4 py-2 bg-yellow-400 rounded-lg"
+                // onClick={handleLogout}
+                onClick={logout}
+              >
+                Sign out
               </Link>
             </div>
           ) : (
@@ -70,7 +96,7 @@ const Layout = () => {
             >
               Home
             </Link>
-        
+
             <Link
               to="/profile"
               className="py-4 hover:scale-105 transition"
@@ -109,13 +135,10 @@ const Layout = () => {
         <Outlet />
       </main>
 
-     
-
       {/* Footer */}
       <footer className="text-black text-center h-[50px] flex items-center justify-center bg-blue-100 ">
         <p>&copy; {new Date().getFullYear()} EstateHub. All rights reserved.</p>
       </footer>
-
     </div>
   );
 };
