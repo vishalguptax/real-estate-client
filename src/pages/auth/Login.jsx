@@ -4,7 +4,7 @@ import { LoginSchema } from "./schema/loginSchema";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
 const initialValues = {
@@ -15,7 +15,7 @@ const initialValues = {
 const Login = () => {
   const {login } = useAuth();
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const navigate = useNavigate("");
+  // const navigate = useNavigate("");
 
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
@@ -38,13 +38,14 @@ const Login = () => {
           login(verifyVal)
           loginSuccessful = true;
           alert("login successful")
-          navigate("/")
+          // navigate("/")
           break;
         }
+      }
         if(!loginSuccessful) {
           alert("password invalid")
         }
-      }
+      
     },
   });
 
@@ -87,7 +88,7 @@ const Login = () => {
               >
                 <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} />
               </i>
-              <div className="">
+              <div className="text-center">
               {errors.password && touched.password && (
                 <p className="text-red-500 text-sm">{errors.password} </p>
               )}
