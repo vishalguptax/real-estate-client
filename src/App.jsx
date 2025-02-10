@@ -7,6 +7,7 @@ import Register from "./pages/auth/Register.jsx"
 import Login from "./pages/auth/Login.jsx";
 import ProtectedRoutes from "./pages/auth/ProtectedRoutes.jsx";
 import ListItem from "./components/listIems/ListItem.jsx";
+import SinglePage from "./pages/singlepage/singlepage.jsx";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/listItem' element={<ListItem />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/test" element={<SinglePage />}></Route>
       </Route>
     </Routes>
   );
