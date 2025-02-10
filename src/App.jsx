@@ -11,20 +11,17 @@ import ListItem from "./components/listIems/ListItem.jsx";
 
 function App() {
   return (
-
     <Routes>
       <Route element={<Layout />}>
         <Route element={<ProtectedRoutes />}>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
-
+        <Route path='/listItem' element={<ListItem />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/listItem" element={<ListItem></ListItem>}></Route>
       </Route>
     </Routes>
-
   );
 }
 
