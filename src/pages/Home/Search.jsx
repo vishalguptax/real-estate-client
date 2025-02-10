@@ -1,5 +1,5 @@
-import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const types = ["buy", "rent"];
 
 export default function Search() {
@@ -9,25 +9,30 @@ export default function Search() {
     minPrice: 0,
     maxPrice: 1000000,
   });
-
-  console.log("location >>", location);
   const switchType = (val) => {
     setQuery((prev) => ({ ...prev, type: val }));
   };
+  const navigate = useNavigate();
+  const handleSearch =()=>{
+    navigate(
+      `/list?type=${query.type}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}&location=${location}`
+    )
+
+  };
   return (
-    <div className=" w-full absolute bottom-0 md:bottom-10 px-4 z-999">
-      <div className="max-w-lg md:max-w-xl lg:max-w-2xl bg-black text-white shadow-md rounded-lg p-4 mx-auto">
+    <div className=" w-[100%] absolute bottom-[30%] md:bottom-[10%] px-4 z-9 m-auto h-[30%]">
+      <div className="w-[70%] md:max-w-xl lg:max-w-2xl bg-black/60 text-white shadow-md rounded-lg p-4 mx-auto ">
         {/* Type Selection */}
         <div className="flex">
           {types.map((type) => (
             <button
               key={type}
               onClick={() => switchType(type)}
-              className={`px-6 py-3 w-1/6 text-center border border-gray-400 ${
+              className={`px-3 py-3 w-1/6 text-center border border-gray-400 cursor-pointer ${
                 query.type === type
-                  ? "bg-yellow-400 text-black"
+                  ? "bg-[#b4877b] text-black"
                   : "bg-black text-white"
-              } first:rounded-l-lg last:rounded-r-lg`}
+              } first:rounded-l-lg last:rounded-r-lg `}
             >
               {type}
             </button>
@@ -37,10 +42,10 @@ export default function Search() {
           <input
             type="text"
             name="location"
-            value={query.location}
+            value={location}
             onChange={(e) => setLocation(e.target.value)}
             placeholder="City Location"
-            className="flex-1 p-3 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 w-full sm:w-auto"
+            className="flex-1 p-3 border border-gray-400 hover:border-[#9b9b9b] rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 w-full sm:w-auto"
           />
           <input
             type="number"
@@ -60,9 +65,11 @@ export default function Search() {
             placeholder="Max Price"
             className="flex-1 p-3 text-gray-50 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
           />
-          <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg flex items-center justify-center transition w-full sm:w-auto">
+         
+          <button type='button' onClick={handleSearch} className="bg-[#b4877b] hover:bg-[#4b4c4e] text-black px-6 py-3 rounded-lg cursor-pointer flex items-center justify-center transition w-full sm:w-auto">
             <img src="./search.png" alt="Search" className="w-6 h-6" />
           </button>
+         
         </form>
       </div>
     </div>

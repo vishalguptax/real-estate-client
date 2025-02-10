@@ -47,4 +47,10 @@ body {
     @apply font-serif text-red-900 text-sm h-1 block;
 }
 
+
+
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    display: none;
 }

@@ -1,4 +1,3 @@
-
 import  { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../pages/auth/AuthContext";
@@ -6,7 +5,6 @@ import { useAuth } from "../pages/auth/AuthContext";
 const Layout = () => {
   const [open, setOpen] = useState(false);
   const {user, logout} = useAuth();
-
 
   return (
     <div className="flex flex-col h-screen">
@@ -69,14 +67,14 @@ const Layout = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className="sm:hidden">
+        <div className="sm:hidden ">
           <button onClick={() => setOpen(!open)}>
             <img src="/public/menu.png" alt="Menu" className="w-9 h-9" />
           </button>
         </div>
 
         {open && (
-          <div className="absolute top-0 right-0 w-1/2 h-screen bg-black text-white flex flex-col items-center justify-center text-lg transition-transform transform translate-x-0">
+          <div className="z-999 absolute top-0 right-0 w-1/2 h-screen bg-black text-white flex flex-col items-center justify-center text-lg transition-transform transform translate-x-0">
             <button
               className="absolute top-5 right-5 text-white text-3xl"
               onClick={() => setOpen(false)}

@@ -143,9 +143,9 @@ const Filter = () => {
         </button>
       </div>
 
-      <div className="pb-40 gap-10">
+      <div className="pb-10">
           {filteredData.length > 0 ? (
-             filteredData.map((item) => <Card key = {item.id} item={item} />)
+             filteredData.map((item) => <Card key = {item.id} item={item}/>)
           ) : (
             <p className="text-sm text-gray-500">No result found.</p>
           )}
