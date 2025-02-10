@@ -2,13 +2,13 @@ import Chat from "../../components/Chat"
 
 const Profile = () => {
   return (
-    <div className=' bg-white md:h-[calc(100vh-110px)] flex flex-col md:flex-row '>
+    <div className=' bg-white md:h-[calc(100vh-100px)] flex flex-col md:flex-row '>
 
       {/* left box */}
       <div className=' flex-3 h-full overflow-y-auto '>
 
         {/* wrapper */}
-        <div className='pr-[20px] h-full'>
+        <div className='pr-[20px] '>
 
           {/* profile box */}
           <div className=' p-3'>
