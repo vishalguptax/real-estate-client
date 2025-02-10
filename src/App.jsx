@@ -23,7 +23,7 @@ function App() {
         <Route path='/listItem' element={<ListItem />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/singlepage" element={<SinglePage />} />
+        <Route path="listItem/singlepage" element={<SinglePage />} />
       </Route>
     </Routes>
 
