@@ -1,24 +1,28 @@
-import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Home from "./pages/Home/Home";
-import Profile from "./pages/Profile/Profile";
-import Register from "./pages/auth/Register";
-import Login from "./pages/auth/Login";
-import SinglePage from "./pages/singlepage/singlepage";
-import ListItem from "./components/listIems/ListItem";
+
+import { Routes, Route} from "react-router-dom";
+import Layout from "./components/Layout.jsx";
+import Home from "./pages/Home/Home.jsx";
+import Profile from "./pages/Profile/Profile.jsx";
+import Register from "./pages/auth/Register.jsx"
+import Login from "./pages/auth/Login.jsx";
+import ProtectedRoutes from "./pages/auth/ProtectedRoutes.jsx";
+
 
 function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/singlepage" element={<SinglePage />} />
-        <Route path="/list" element={<ListItem />}></Route>
-      </Route>
-    </Routes>
+    
+        <Routes>
+          <Route element={<Layout />}>
+            <Route element ={<ProtectedRoutes/>}>
+              <Route path="/" element={<Home/>}/>
+              <Route path="/profile" element={<Profile/>}/>
+            </Route>
+            
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/login" element={<Login/>}/>
+          </Route>
+        </Routes>
+     
   );
 }
 
