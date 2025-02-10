@@ -14,10 +14,10 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route element ={<ProtectedRoutes/>}>
-              <Route path="/" element={<Home/>}/>
               <Route path="/profile" element={<Profile/>}/>
             </Route>
             
+            <Route path="/" element={<Home/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/login" element={<Login/>}/>
           </Route>

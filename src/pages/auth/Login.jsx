@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-
+import { useAuth } from "./AuthContext";
 
 const initialValues = {
   email: "",
@@ -13,6 +13,7 @@ const initialValues = {
 };
 
 const Login = () => {
+  const {login } = useAuth();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate("");
 
@@ -33,9 +34,11 @@ const Login = () => {
       for(let i=0; i< getDetails.length; i++){
         let verifyVal = getDetails[i];
         if(verifyVal.email === values.email && verifyVal.password ===values.password){
-          localStorage.setItem("loggedInUser",JSON.stringify(verifyVal))
-          navigate("/")
+          // localStorage.setItem("loggedInUser",JSON.stringify(verifyVal))
+          login(verifyVal)
+          loginSuccessful = true;
           alert("login successful")
+          navigate("/")
           break;
         }
         if(!loginSuccessful) {
