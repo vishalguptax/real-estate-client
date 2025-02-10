@@ -51,12 +51,12 @@ const Layout = () => {
         {/* Mobile Menu */}
         <div className="sm:hidden">
           <button onClick={() => setOpen(!open)}>
-            <img src="/public/menu.png" alt="Menu" className="w-9 h-9" />
+            <img src="/menu.png" alt="Menu" className="w-9 h-9" />
           </button>
         </div>
 
         {open && (
-          <div className="absolute top-0 right-0 w-1/2 h-screen bg-black text-white flex flex-col items-center justify-center text-lg transition-transform transform translate-x-0">
+          <div className="absolute top-0 right-0 w-1/2 h-screen bg-black text-white flex flex-col items-center justify-center text-lg transition-transform transform translate-x-0 z-1000">
             <button
               className="absolute top-5 right-5 text-white text-3xl"
               onClick={() => setOpen(false)}
@@ -79,11 +79,26 @@ const Layout = () => {
               Profile
             </Link>
             <Link
-              to="/signup"
-              className="py-4 bg-yellow-400 rounded-lg"
+              to="/register"
+              className="py-4 bg-yellow-400 rounded-lg p-2.5 m-2"
               onClick={() => setOpen(false)}
             >
               Sign up
+            </Link>
+            <Link
+              to="/login"
+              className="py-4 bg-yellow-400 rounded-lg p-4 m-2"
+              onClick={() => setOpen(false)}
+            >
+              Login
+            </Link>
+
+            <Link
+              to="/singlepage"
+              className="py-4 bg-yellow-400 rounded-lg p-4 m-2"
+              onClick={() => setOpen(false)}
+            >
+              single page
             </Link>
           </div>
         )}
