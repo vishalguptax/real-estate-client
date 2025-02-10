@@ -10,7 +10,7 @@ const ListItem = () => {
           <Filter />
         </div>
       </div>
-      <div className="flex-[2] justify-center text-center m-10 bg-[#fcf5f3] md:flex-1  ">
+      <div className="flex-[2] justify-center h-full text-center m-10 bg-[#fcf5f3] md:flex-1  ">
         <Map />
       </div>
     </div>

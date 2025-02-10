@@ -112,7 +112,7 @@ const Filter = () => {
             id="maxPrice"
             name="maxPrice"
             placeholder="Any"
-            value={minValue}
+            value={minValue}  
             max = {100000}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
             onChange = {(e) => {
