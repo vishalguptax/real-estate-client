@@ -2,9 +2,9 @@ import Search from "./Search";
 
 function Home() {
   return (
-    <div className="flex h-screen">
+    <div className="flex  h-[calc(100vh-100px)] border">
       {/* Text Container */}
-      <div className="flex relative flex-1">
+      <div className="flex relative flex-1 ">
         <img
           src="./background.svg"
           alt=""

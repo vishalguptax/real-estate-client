@@ -44,7 +44,7 @@ const Register = () => {
     });
 
   return (
-    <div className="image-bg2">
+    <div className="image-bg">
       <div className="max-h-[90vh] overflow-auto w-full flex justify-center">
         <form
           className="border-amber-400 p-4 w-full max-w-md bg-white/20 shadow-xl rounded-xl ring-2 ring-black/20"
@@ -58,9 +58,7 @@ const Register = () => {
           <div className="register-div-input">
             <input
               className={`login-input ${
-                errors.name && touched.name
-                  ? "border-red-500"
-                  : "border-gray-500"
+                errors.name && touched.name ? "border-red-500" : "border-gray-500"
               }`}
               id="name"
               type="text"
