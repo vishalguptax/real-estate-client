@@ -13,12 +13,9 @@ export default function Search() {
     setQuery((prev) => ({ ...prev, type: val }));
   };
   const navigate = useNavigate();
-  const handleSearch =(e)=>{
+  const handleSearch = (e) => {
     e.preventDefault();
-    navigate(
-     "/listItem"
-    )
-
+    navigate("/listItem");
   };
   return (
     <div className=" w-[100%] absolute bottom-[30%] md:bottom-[10%] px-4 z-9 m-auto h-[30%]">
@@ -51,14 +48,9 @@ export default function Search() {
           <input
             type="number"
             name="minPrice"
-            onChange={
-            
-              (e) => {
-                e.preventDefault();
-                setQuery(e.target.value)  
-            }
-          }
-            
+            onChange={(e) => {
+              setQuery({...query,minPrice: e.target.value});
+            }}
             min={0}
             max={10000000}
             placeholder="Min Price"
@@ -73,11 +65,14 @@ export default function Search() {
             placeholder="Max Price"
             className="flex-1 p-3 text-gray-50 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
           />
-         
-          <button type='button' onClick={handleSearch} className="bg-[#b4877b] hover:bg-[#4b4c4e] text-black px-6 py-3 rounded-lg cursor-pointer flex items-center justify-center transition w-full sm:w-auto">
+
+          <button
+            type="button"
+            onClick={handleSearch}
+            className="bg-[#b4877b] hover:bg-[#4b4c4e] text-black px-6 py-3 rounded-lg cursor-pointer flex items-center justify-center transition w-full sm:w-auto"
+          >
             <img src="./search.png" alt="Search" className="w-6 h-6" />
           </button>
-         
         </form>
       </div>
     </div>
