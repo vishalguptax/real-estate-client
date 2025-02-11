@@ -48,14 +48,14 @@ const Register = () => {
     <div className="image-bg">
       <div className="max-h-[90vh] my-10 overflow-auto custom-scrollbar flex justify-center w-[80%] ml-auto mr-auto max-w-md bg-white/20 shadow-xl rounded-lg ring-2 ring-black/20">
         <form className="w-full p-5" onSubmit={handleSubmit} autoComplete="off">
-          <h1 className="text-center text-2xl font-bold text-black mb-4">
+          <h1 className="text-center text-2xl font-bold text-black m-4">
             Sign Up
           </h1>
           <div className="items-center m-3">
        
             <div className="register-div-input">
               <input
-                className={`login-input ${
+                className={`login-input mb-2 ${
                   errors.name && touched.name
                     ? "border-red-500"
                     : "border-gray-500"
@@ -75,7 +75,7 @@ const Register = () => {
            
             <div className="register-div-input">
               <input
-                className={`login-input ${
+                className={`login-input mb-2 ${
                   errors.email && touched.email
                     ? "border-red-500"
                     : "border-gray-500"
@@ -95,7 +95,7 @@ const Register = () => {
          
             <div className="register-div-input">
               <input
-                className={`login-input ${
+                className={`login-input mb-2 ${
                   errors.mobileNumber && touched.mobileNumber
                     ? "border-red-500"
                     : "border-gray-500"
@@ -115,7 +115,7 @@ const Register = () => {
             <div className="sm:flex-row md:gap-8 md:flex">
               <div className="relative register-div-input">
                 <input
-                  className={`login-input ${
+                  className={`login-input mb-2 ${
                     errors.password && touched.password
                       ? "border-red-500"
                       : "border-gray-500"
@@ -142,7 +142,7 @@ const Register = () => {
 
               <div className="relative register-div-input">
                 <input
-                  className={`login-input ${
+                  className={`login-input mb-2 ${
                     errors.confirmPassword && touched.confirmPassword
                       ? "border-red-500"
                       : "border-gray-500"
