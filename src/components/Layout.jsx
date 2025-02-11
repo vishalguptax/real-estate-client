@@ -1,11 +1,12 @@
-
-import  { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { useState } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../pages/auth/AuthContext";
+import NavbarButton from "./reusable/NavbarButton";
 
 const Layout = () => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const {user, logout} = useAuth();
+  const { user, logout } = useAuth();
 
 
   return (
@@ -32,38 +33,40 @@ const Layout = () => {
         <div className="flex items-center gap-4">
           {user ? (
             <div className="flex items-center gap-4 font-bold">
-              <Link
-                to="/profile"
-                className="relative px-4 py-2 bg-yellow-400 rounded-lg"
+
+              <NavbarButton
+                className=" relative px-4 py-2 bg-yellow-400 rounded-lg hover:scale-105 cursor-pointer"
+                onClick={() => navigate("/profile")}
               >
                 Profile
-              </Link>
-              <Link
-                to="/login"
-                className="relative px-4 py-2 bg-yellow-400 rounded-lg"
-                // onClick={handleLogout}
-                onClick={logout}
+              </NavbarButton>
+
+              <NavbarButton
+                className=" relative px-4 py-2 bg-yellow-400 rounded-lg hover:scale-105 cursor-pointer"
+                onClick={() => { navigate("/login"); logout(); }}
               >
-                Sign out
-              </Link>
+                Sign Out
+              </NavbarButton>
+
             </div>
-            
-            
+
+
 
           ) : (
             <>
-              <Link
-                to="/login"
-                className="px-4 py-2 hover:scale-105 transition hidden md:block"
+
+              <NavbarButton
+                className="px-4 py-2 hover:scale-105 bg-yellow-400 rounded-lg cursor-pointer transition hidden md:block"
+                onClick={() => { navigate("/login") }}
               >
-                Sign in
-              </Link>
-              <Link
-                to="/register"
-                className="px-4 py-2 bg-yellow-400 rounded-lg hover:scale-105 transition hidden md:block"
+                Sign In
+              </NavbarButton>
+              <NavbarButton
+                className="px-4 py-2 hover:scale-105 bg-yellow-400 rounded-lg cursor-pointer transition hidden md:block"
+                onClick={() => { navigate("/register") }}
               >
-                Sign up
-              </Link>
+                Sign Up
+              </NavbarButton>
             </>
           )}
         </div>
@@ -75,44 +78,46 @@ const Layout = () => {
           </button>
         </div>
 
-        {open && (
-          <div className="absolute top-0 right-0 w-1/2 h-screen z-999 bg-black text-white flex flex-col items-center justify-center text-lg transition-transform transform translate-x-0">
-            <button
-              className="absolute top-5 right-5 text-white text-3xl"
-              onClick={() => setOpen(false)}
-            >
-              ×
-            </button>
-            <Link
-              to="/"
-              className="py-4 hover:scale-105 transition"
-              onClick={() => setOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className="py-4 hover:scale-105 transition"
-              onClick={() => setOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              to="/contact"
-              className="py-4 hover:scale-105 transition"
-              onClick={() => setOpen(false)}
-            >
-              Contact
-            </Link>
-            <Link
-              to="/signup"
-              className="py-4 bg-yellow-400 rounded-lg"
-              onClick={() => setOpen(false)}
-            >
-              Sign up
-            </Link>
-          </div>
-        )}
+        {
+          open && (
+            <div className="absolute top-0 right-0 w-1/2 h-screen z-999 bg-black text-white flex flex-col items-center justify-center text-lg transition-transform transform translate-x-0">
+              <button
+                className="absolute top-5 right-5 text-white text-3xl"
+                onClick={() => setOpen(false)}
+              >
+                ×
+              </button>
+              <Link
+                to="/"
+                className="py-4 hover:scale-105 transition"
+                onClick={() => setOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                to="/about"
+                className="py-4 hover:scale-105 transition"
+                onClick={() => setOpen(false)}
+              >
+                About
+              </Link>
+              <Link
+                to="/contact"
+                className="py-4 hover:scale-105 transition"
+                onClick={() => setOpen(false)}
+              >
+                Contact
+              </Link>
+              <Link
+                to="/signup"
+                className="py-4 bg-yellow-400 rounded-lg"
+                onClick={() => setOpen(false)}
+              >
+                Sign up
+              </Link>
+            </div>
+          )
+        }
       </nav>
 
       {/* Main Content */}
@@ -121,7 +126,7 @@ const Layout = () => {
       </main>
 
       {/* Footer */}
-      <footer className="text-black text-center h-[50px] flex items-center justify-center ">
+      <footer className="text-black text-center h-[50px] flex items-center justify-center " >
         <p>&copy; {new Date().getFullYear()} EstateHub. All rights reserved.</p>
       </footer>
     </div>
