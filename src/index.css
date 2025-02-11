@@ -5,26 +5,35 @@ body {
   height: 100vh;
 }
 
+@theme {
+  --color-primary: #6366f1;
+  --color-primary-foreground: #eef2ff;
+  --color-secondary: #f87171;
+  --color-secondary-foreground: #fefefe;
+}
+
 .custom-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
 .image-bg {
-  @apply flex justify-center p-12 h-[calc(100vh-100px)] w-full bg-[url(https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)];
+  @apply flex justify-center p-12 h-[calc(100vh-100px)] w-full 
+  bg-cover bg-center bg-no-repeat
+  bg-[url(https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)];
 }
 .image-bg2 {
   @apply w-full min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat;
   background-image: url("https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   overflow-y: auto;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem; 
 }
 
 .login-button {
-  @apply text-white bg-blue-700 hover:bg-yellow-500 focus:ring-blue-300 font-medium rounded-full text-sm py-2 text-center w-20 block mx-auto;
+  @apply text-secondary-foreground bg-primary hover:bg-yellow-500 focus:ring-blue-300 font-medium rounded-full text-sm py-2 text-center w-20 block mx-auto;
 }
 
 .login-input {
-  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-4;
+  @apply bg-secondary-foreground border-secondary-foreground text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-4;
 }
 
 .login-input {
@@ -46,5 +55,6 @@ body {
 }
 
 .error-message {
-  @apply font-serif text-red-900 text-sm h-1 block;
+  @apply font-serif text-red-800 text-sm md:h-3 ml-3 
+  md:pt-0 sm:h-5  block;
 }
