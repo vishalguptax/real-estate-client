@@ -4,13 +4,14 @@ import { useContext } from 'react';
 import { DataContext }  from './DataContext'
 import Card from "./Card";
 
-const Filter = () => {
+const Filter = ({type, location, minPrice, maxPrice}) => {
   const { data} = useContext(DataContext);
-  const[minValue, setMinValue] = useState(0);
-  const[maxValue, setMaxValue] = useState(0);
-  const[bedRoom, setBedRoom] = useState(0);
-  const [city, setCity] = useState("");
+  const[minValue, setMinValue] = useState(minPrice);
+  const[maxValue, setMaxValue] = useState(maxPrice);
+  const[bedRoom, setBedRoom] = useState();
+  const [city, setCity] = useState(location);
   const [filteredData, setFilteredData] = useState([...data])
+  
 
   const searchResult = () => {
      let result = [...data];
@@ -25,7 +26,7 @@ const Filter = () => {
         result = result.filter((item) => item.price >= minValue);
      }
 
-     if (maxValue > minValue && maxValue > 0) {
+     if (maxValue > 0) {
       result = result.filter((item) => item.price <= maxValue);
     }
 
@@ -71,7 +72,7 @@ const Filter = () => {
         {/* Type */}
         <div className="flex flex-col gap-1">
           <label htmlFor="type" className="text-xs">Type</label>
-          <select id="type" name="type" className="w-full p-2 border border-gray-300 rounded-md text-sm">
+          <select id="type" name="type" value={type} className="w-full p-2 border border-gray-300 rounded-md text-sm">
             <option value="buy">Buy</option>
             <option value="rent">Rent</option>
           </select>
@@ -95,28 +96,36 @@ const Filter = () => {
             id="minPrice"
             name="minPrice"
             placeholder="Any"
+            min={1}
+            max={1000000}
             value={minValue}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
-            onChange = { (e) => { 
-               setMinValue(Number(e.target.value));
-            }
-            }
+            onChange = { (e) => {
+               let value = Number(e.target.value);
+               if(/^\d{0, 10}$/.test(value)) {
+                setMinValue(Number(e.target.value));
+               }   
+            }}
           />
         </div>
 
         {/* Max Price */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="maxPrice" className="text-xs">Max Price</label>
+          <label htmlFor="maxValue" className="text-xs">Max Price</label>
           <input
             type="number"
-            id="maxPrice"
-            name="maxPrice"
+            id="maxValue"
+            name="maxValue"
             placeholder="Any"
-            value={minValue}  
-            max = {100000}
+            value={maxValue} 
+            min = {1} 
+            max = {10000000000}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
             onChange = {(e) => {
-               setMaxValue(Number(e.target.value));
+               let value = Number(e.target.value);
+               if(/^\d{0,10}$/.test(value)) {
+                  setMaxValue(value);
+               }
             }}
           />
         </div>
@@ -125,13 +134,21 @@ const Filter = () => {
         <div className="flex flex-col gap-1">
           <label htmlFor="bedroom" className="text-xs">Bedroom</label>
           <input
-            type="text"
+            type="number"
             id="bedroom"
             name="bedroom"
             placeholder="Any"
+            min={1}
+            max={10}
             value={bedRoom}
             onChange={(e) => {
-              setBedRoom(Number(e.target.value));
+              let val = Number(e.target.value);
+              if(val > 10) {
+                 alert("Maximum value allowed is 10")
+                 val = 10;
+              }
+              setBedRoom(val);
+
             }}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
           />
