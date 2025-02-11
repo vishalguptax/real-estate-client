@@ -3,17 +3,7 @@ import { useFormik } from "formik";
 import RegisterSchema from "./schema/registerSchema";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
-import { Link } from "react-router-dom";
-
-const onSubmit = (values, actions) => {
-  console.log("Form data: ", values);
-  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-  existingUsers.push(values);
-
-  localStorage.setItem("users", JSON.stringify(existingUsers));
-  actions.resetForm();
-  alert("Account created successfully!");
-};
+import { Link, useNavigate } from "react-router-dom";
 
 const initialValues = {
   name: "",
@@ -25,6 +15,17 @@ const initialValues = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
+  const onSubmit = (values, actions) => {
+    console.log("Form data: ", values);
+    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+    existingUsers.push(values);
+  
+    localStorage.setItem("users", JSON.stringify(existingUsers));
+    actions.resetForm();
+    alert("Account created successfully!");
+    navigate('/Login')
+  };
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
