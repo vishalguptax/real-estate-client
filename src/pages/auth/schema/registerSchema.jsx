@@ -5,7 +5,7 @@ const RegisterSchema = yup.object().shape({
   email: yup
     .string()
     .email("Enter your email")
-    .matches(/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/)
+    .matches(/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/,"Please enter a valid email")
     // .matches(/^(?=.*[a-z])/,
     // .matches(),
     .required("Required"),

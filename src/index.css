@@ -32,7 +32,7 @@ body {
 }
 
 .login-button {
-  @apply text-secondary-foreground bg-primary hover:bg-yellow-500 focus:ring-blue-300 font-medium rounded-full text-sm py-2 text-center w-20 block mx-auto;
+  @apply text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-blue-300 font-medium rounded-full text-sm py-2 text-center w-20 block mx-auto;
 }
 
 
@@ -54,10 +54,10 @@ body {
 }
 
 .register-div-input {
-  @apply flex flex-col;
+  @apply flex flex-col gap-2;
 }
 
 .error-message {
-  @apply font-serif text-red-800 text-sm md:h-3 ml-3 
+  @apply font-serif text-red-800 text-sm 
   md:pt-0 sm:h-5 dark:ml-0 dark:p-2  block;
 }

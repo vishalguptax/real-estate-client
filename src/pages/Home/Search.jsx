@@ -29,7 +29,7 @@ export default function Search() {
             <button
               key={type}
               onClick={() => switchType(type)}
-              className={`px-3 py-3 w-1/6 text-center border border-gray-400 cursor-pointer ${
+              className={`px-3 py-3 md:w-1/6 text-center border border-gray-400 cursor-pointer ${
                 query.type === type
                   ? "bg-[#b4877b] text-black"
                   : "bg-black text-white"
