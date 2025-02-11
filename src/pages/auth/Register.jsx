@@ -44,19 +44,19 @@ const Register = () => {
     });
 
   return (
-    <div className="image-bg">
+    <div className="image-bg  flex items-center justify-center">
 
-      <div className="max-h-fit my-10 overflow-auto custom-scrollbar flex justify-center w-[80%] ml-auto mr-auto max-w-md bg-white/20 shadow-xl rounded-lg ring-2 ring-black/20">
+      <div className="max-h-fit  flex items-center  overflow-auto custom-scrollbar w-[80%] ml-auto mr-auto max-w-md  bg-white/20 shadow-xl rounded-lg ring-2 ring-black/20 ">
         <form
-          className="w-full h-full  p-5 dark:bg-gray-700/20"
+          className="w-full max-h-fit dark:bg-gray-700/20 p-4"
           onSubmit={handleSubmit}
           autoComplete="off"
         >
 
-          <h1 className="text-center text-2xl font-bold text-black mb-4">
+          <h1 className="text-center text-2xl font-bold text-black m-4">
             Sign Up
           </h1>
-          <div className=" m-3">
+          <div className=" w-full max-h-fit">
             <div className="register-div-input">
               <input
                 className={`login-input ${
@@ -116,7 +116,7 @@ const Register = () => {
             </div>
 
             <div className="sm:flex-row md:gap-8 md:flex">
-              <div className="relative register-div-input">
+              <div className="relative register-div-input w-1/2">
                 <input
                   className={`login-input ${
                     errors.password && touched.password
@@ -143,7 +143,7 @@ const Register = () => {
                 )}
               </div>
 
-              <div className="relative register-div-input">
+              <div className="relative register-div-input w-1/2">
                 <input
                   className={`login-input ${
                     errors.confirmPassword && touched.confirmPassword
@@ -171,11 +171,11 @@ const Register = () => {
               </div>
             </div>
 
-            <button className="login-button mx-auto block mt-4" type="submit">
+            <button className="login-button mx-auto block m-4" type="submit">
               Sign Up!
             </button>
 
-            <p className="text-black text-center mt-3">
+            <p className="text-black text-center m-3">
               Already have an account?
               <Link to="/Login" className="hover:text-amber-500 underline">
                 {" "}
