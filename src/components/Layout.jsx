@@ -1,8 +1,6 @@
-
 import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../pages/auth/AuthContext";
-import Button from "./reusable/NavbarButton";
 import NavbarButton from "./reusable/NavbarButton";
 
 const Layout = () => {
@@ -120,18 +118,18 @@ const Layout = () => {
             </div>
           )
         }
-      </nav >
+      </nav>
 
       {/* Main Content */}
-      < main className=" h-[calc(100vh-150px)] overflow-hidden bg-gray-100 " >
+      <main className=" h-[calc(100vh-150px)] overflow-hidden bg-gray-100 ">
         <Outlet />
-      </main >
+      </main>
 
       {/* Footer */}
-      < footer className="text-black text-center h-[50px] flex items-center justify-center " >
+      <footer className="text-black text-center h-[50px] flex items-center justify-center " >
         <p>&copy; {new Date().getFullYear()} EstateHub. All rights reserved.</p>
-      </footer >
-    </div >
+      </footer>
+    </div>
   );
 };
 
