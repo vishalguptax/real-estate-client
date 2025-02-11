@@ -3,7 +3,17 @@ import { useFormik } from "formik";
 import RegisterSchema from "./schema/registerSchema";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+const onSubmit = (values, actions) => {
+  console.log("Form data: ", values);
+  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+  existingUsers.push(values);
+
+  localStorage.setItem("users", JSON.stringify(existingUsers));
+  actions.resetForm();
+  alert("Account created successfully!");
+};
 
 const initialValues = {
   name: "",
@@ -15,19 +25,6 @@ const initialValues = {
 };
 
 const Register = () => {
-  const navigate = useNavigate();
-
-  const onSubmit = (values, actions) => {
-    console.log("Form data: ", values);
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    existingUsers.push(values);
-
-    localStorage.setItem("users", JSON.stringify(existingUsers));
-    actions.resetForm();
-    alert("Account created successfully!");
-    navigate("/Login");
-  };
-
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
@@ -49,12 +46,12 @@ const Register = () => {
   return (
     <div className="image-bg">
       <div className="max-h-[90vh] my-10 overflow-auto custom-scrollbar flex justify-center w-[80%] ml-auto mr-auto max-w-md bg-white/20 shadow-xl rounded-lg ring-2 ring-black/20">
-        <form className="w-full p-5" onSubmit={handleSubmit} autoComplete="off">
+        <form className="w-full p-5 dark:bg-gray-700/20" onSubmit={handleSubmit} autoComplete="off">
           <h1 className="text-center text-2xl font-bold text-black mb-4">
             Sign Up
           </h1>
           <div className="items-center m-3">
-
+       
             <div className="register-div-input">
               <input
                 className={`login-input ${
@@ -74,6 +71,7 @@ const Register = () => {
               )}
             </div>
 
+           
             <div className="register-div-input">
               <input
                 className={`login-input ${
@@ -93,7 +91,7 @@ const Register = () => {
               )}
             </div>
 
-
+         
             <div className="register-div-input">
               <input
                 className={`login-input ${
@@ -113,7 +111,7 @@ const Register = () => {
               )}
             </div>
 
-            <div className="sm:flex-row md:flex md:gap-2">
+            <div className="flex gap-8 md:flex-row">
               <div className="relative register-div-input">
                 <input
                   className={`login-input ${
@@ -129,7 +127,7 @@ const Register = () => {
                   onBlur={handleBlur}
                 />
                 <i
-                  className="absolute right-3 top-8 transform -translate-y-1/2 cursor-pointer"
+                  className="absolute right-3 top-9 transform -translate-y-1/2 cursor-pointer"
                   onClick={togglePasswordVisibility}
                 >
                   <FontAwesomeIcon
@@ -156,7 +154,7 @@ const Register = () => {
                   onBlur={handleBlur}
                 />
                 <i
-                  className="absolute right-3 top-8 transform -translate-y-1/2 cursor-pointer"
+                  className="absolute right-3 top-9 transform -translate-y-1/2 cursor-pointer"
                   onClick={toggleConfirmPasswordVisibility}
                 >
                   <FontAwesomeIcon
@@ -173,7 +171,7 @@ const Register = () => {
               Sign Up!
             </button>
 
-
+        
             <p className="text-black text-center mt-3">
               Already have an account?
               <Link to="/Login" className="hover:text-amber-500">
