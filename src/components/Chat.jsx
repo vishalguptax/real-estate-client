@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import Chats from './Chats';
+import MessageCard from './MessageCard';
+import { useState } from 'react';
 
 const Chat = () => {
     const [openChatBox, setOpenChatBox] = useState(true);
@@ -7,68 +9,8 @@ const Chat = () => {
         <div className=' mx-2  h-full flex flex-col'>
 
 
-            {/* Messages */}
-            <div className=' overflow-y-scroll flex flex-col gap-2 flex-1 custom-scrollbar'>
-
-                <h1 className=' font-bold text-2xl p-3'>Messages</h1>
-
-                <div className=' flex gap-2 items-center border-1 p-2 rounded-lg'>
-                    <img src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png' className=' w-[40px] h-[40px] rounded-full'></img>
-                    <span className=' font-bold'>Anvay</span>
-                    <p>Hii, How are you? I am fine here and hope the same ....</p>
-                </div>
-                <div className=' flex gap-2 items-center border-1 p-2 rounded-lg'>
-                    <img src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png' className=' w-[40px] h-[40px] rounded-full'></img>
-                    <span className=' font-bold'>Anvay</span>
-                    <p>Hii, How are you? I am fine here and hope the same ....</p>
-                </div>
-                <div className=' flex gap-2 items-center border-1 p-2 rounded-lg'>
-                    <img src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png' className=' w-[40px] h-[40px] rounded-full'></img>
-                    <span className=' font-bold'>Anvay</span>
-                    <p>Hii, How are you? I am fine here and hope the same ....</p>
-                </div>
-                <div className=' flex gap-2 items-center border-1 p-2 rounded-lg'>
-                    <img src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png' className=' w-[40px] h-[40px] rounded-full'></img>
-                    <span className=' font-bold'>Anvay</span>
-                    <p>Hii, How are you? I am fine here and hope the same ....</p>
-                </div>
-                <div className=' flex gap-2 items-center border-1 p-2 rounded-lg'>
-                    <img src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png' className=' w-[40px] h-[40px] rounded-full'></img>
-                    <span className=' font-bold'>Anvay</span>
-                    <p>Hii, How are you? I am fine here and hope the same ....</p>
-                </div>
-                <div className=' flex gap-2 items-center border-1 p-2 rounded-lg'>
-                    <img src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png' className=' w-[40px] h-[40px] rounded-full'></img>
-                    <span className=' font-bold'>Anvay</span>
-                    <p>Hii, How are you? I am fine here and hope the same ....</p>
-                </div>
-                <div className=' flex gap-2 items-center border-1 p-2 rounded-lg'>
-                    <img src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png' className=' w-[40px] h-[40px] rounded-full'></img>
-                    <span className=' font-bold'>Anvay</span>
-                    <p>Hii, How are you? I am fine here and hope the same ....</p>
-                </div>
-                <div className=' flex gap-2 items-center border-1 p-2 rounded-lg'>
-                    <img src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png' className=' w-[40px] h-[40px] rounded-full'></img>
-                    <span className=' font-bold'>Anvay</span>
-                    <p>Hii, How are you? I am fine here and hope the same ....</p>
-                </div>
-                <div className=' flex gap-2 items-center border-1 p-2 rounded-lg'>
-                    <img src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png' className=' w-[40px] h-[40px] rounded-full'></img>
-                    <span className=' font-bold'>Anvay</span>
-                    <p>Hii, How are you? I am fine here and hope the same ....</p>
-                </div>
-                <div className=' flex gap-2 items-center border-1 p-2 rounded-lg'>
-                    <img src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png' className=' w-[40px] h-[40px] rounded-full'></img>
-                    <span className=' font-bold'>Anvay</span>
-                    <p>Hii, How are you? I am fine here and hope the same ....</p>
-                </div>
-                <div className=' flex gap-2 items-center border-1 p-2 rounded-lg'>
-                    <img src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png' className=' w-[40px] h-[40px] rounded-full'></img>
-                    <span className=' font-bold'>Anvay</span>
-                    <p>Hii, How are you? I am fine here and hope the same ....</p>
-                </div>
-
-            </div>
+            {/* Chats */}
+            <Chats></Chats>
 
             {/* chat box */}
             {openChatBox && <div className=' flex-1 flex justify-between flex-col'>
@@ -84,46 +26,8 @@ const Chat = () => {
 
                 {/* center */}
                 <div className='p-1 overflow-y-scroll flex flex-col gap-1 h-[350px] custom-scrollbar'>
-                    <div className=' border w-[50%] rounded-lg px-1 ml-auto text-right'>
-                        <p className=' font-bold'>Hii How are you ?</p>
-                        <p className=' text-[10px]'>1 hour ago</p>
-                    </div>
-                    <div className=' border w-[50%] rounded-lg px-1'>
-                        <p className=' font-bold'>Hii How are you ?</p>
-                        <p className=' text-[10px]'>1 hour ago</p>
-                    </div>
-                    <div className=' border w-[50%] rounded-lg px-1  ml-auto text-right'>
-                        <p className=' font-bold'>Hii How are you ?</p>
-                        <p className=' text-[10px]'>1 hour ago</p>
-                    </div>
-                    <div className=' border w-[50%] rounded-lg px-1'>
-                        <p className=' font-bold'>Hii How are you ?</p>
-                        <p className=' text-[10px]'>1 hour ago</p>
-                    </div>
-                    <div className=' border w-[50%] rounded-lg px-1  ml-auto text-right'>
-                        <p className=' font-bold'>Hii How are you ?</p>
-                        <p className=' text-[10px]'>1 hour ago</p>
-                    </div>
-                    <div className=' border w-[50%] rounded-lg px-1'>
-                        <p className=' font-bold'>Hii How are you ?</p>
-                        <p className=' text-[10px]'>1 hour ago</p>
-                    </div>
-                    <div className=' border w-[50%] rounded-lg px-1  ml-auto text-right'>
-                        <p className=' font-bold'>Hii How are you ?</p>
-                        <p className=' text-[10px]'>1 hour ago</p>
-                    </div>
-                    <div className=' border w-[50%] rounded-lg px-1  '>
-                        <p className=' font-bold'>Hii How are you ?</p>
-                        <p className=' text-[10px]'>1 hour ago</p>
-                    </div>
-                    <div className=' border w-[50%] rounded-lg px-1  ml-auto text-right'>
-                        <p className=' font-bold'>Hii How are you ?</p>
-                        <p className=' text-[10px]'>1 hour ago</p>
-                    </div>
-                    <div className=' border w-[50%] rounded-lg px-1  '>
-                        <p className=' font-bold'>Hii How are you ?</p>
-                        <p className=' text-[10px]'>1 hour ago</p>
-                    </div>
+
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map((index) => <MessageCard key={index} index={index}></MessageCard>)}
                 </div>
 
                 {/* bottom */}
