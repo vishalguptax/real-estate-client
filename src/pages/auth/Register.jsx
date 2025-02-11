@@ -158,9 +158,9 @@ const Register = () => {
             {/* Login Link */}
             <p className="text-black text-center mt-3">
               Already have an account?
-              <Link to="/Login" className="hover:text-amber-500">
-                {" "}
-                Sign In{" "}
+              <Link to="/Login" className="hover:text-amber-500 underline">
+                 {" "}
+                Sign In{"  "}
               </Link>
             </p>
           </div>

@@ -9,7 +9,7 @@ const Profile = () => {
   const [filteredData, setFilteredData] = useState([...data])
 
   return (
-    <div className=' bg-white h-[calc(100vh-100px)] overflow-y-scroll custom-scrollbar md:flex md:flex-row  '>
+    <div className=' bg-white h-[calc(100vh-60px)] overflow-y-scroll custom-scrollbar md:flex md:flex-row  '>
 
       {/* left box */}
       <div className=' flex-3 md:h-full overflow-y-auto custom-scrollbar '>

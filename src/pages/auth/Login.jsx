@@ -52,9 +52,9 @@ const Login = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="w-full h-screen flex items-center justify-center bg-[url(https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]">
+        <div className="w-full h-[calc(100vh-60px)] flex items-center justify-center bg-[url(https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]">
           <div className="isolate aspect-video w-96 rounded-xl bg-white/20  ring-2 shadow-xl ring-black/20 p-4">
-            <h1 className="text-center p-4">User Login</h1>
+            <h1 className="text-center text-2xl font-bold text-black mb-4">Sign In</h1>
             <div className="flex flex-col justify-center items-center">
               <input
                 type="email"
