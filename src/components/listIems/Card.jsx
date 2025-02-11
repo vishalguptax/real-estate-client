@@ -4,7 +4,7 @@ const Card = ({ item }) => {
   return (
     <div className="flex flex-col md:flex-row gap-2 p-4  rounded-lg shadow-sm hover:shadow-md transition-shadow mb-3">
       {/* Image Container */}
-      <Link to={`/${item.id}`} className="w-full md:w-1/3 h-[200px]">
+      <Link to={`singlepage`} className="w-full md:w-1/3 h-[200px]">
         <img
           src={item?.images}
           alt={item.title}

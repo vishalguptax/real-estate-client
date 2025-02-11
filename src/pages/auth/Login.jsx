@@ -1,11 +1,11 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { useFormik } from "formik";
 import { LoginSchema } from "./schema/loginSchema";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
-
+// import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 const initialValues = {
   email: "",
@@ -13,35 +13,39 @@ const initialValues = {
 };
 
 const Login = () => {
+  const {login } = useAuth();
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const navigate = useNavigate("");
+  // const navigate = useNavigate("");
 
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
   };
 
-  const { values,errors,touched, handleChange, handleSubmit } = useFormik({
+  const { values, errors, touched, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
-    validationSchema:LoginSchema,
+    validationSchema: LoginSchema,
 
     onSubmit: (values) => {
-      
+
       let getDetails = [];
-      getDetails = JSON.parse(localStorage.getItem("users")|| "[]");
+      getDetails = JSON.parse(localStorage.getItem("users") || "[]");
       let loginSuccessful = false;
 
-      for(let i=0; i< getDetails.length; i++){
+      for (let i = 0; i < getDetails.length; i++) {
         let verifyVal = getDetails[i];
         if(verifyVal.email === values.email && verifyVal.password ===values.password){
-          localStorage.setItem("loggedInUser",JSON.stringify(verifyVal))
-          navigate("/")
+          // localStorage.setItem("loggedInUser",JSON.stringify(verifyVal))
+          login(verifyVal)
+          loginSuccessful = true;
           alert("login successful")
+          // navigate("/")
           break;
         }
+      }
         if(!loginSuccessful) {
           alert("password invalid")
         }
-      }
+      
     },
   });
 
@@ -57,15 +61,15 @@ const Login = () => {
                 name="email"
                 placeholder="Enter email id"
                 className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-4 
-                ${errors.email && touched.email? "border-red-500" : "dark:border-gray-600 "}`}
+                ${errors.email && touched.email ? "border-red-500" : "dark:border-gray-600 "}`}
                 onChange={handleChange}
                 value={values.email}
               />
-              
+
               <div className="">
-              {errors.email && touched.email && (
-                <p className="text-red-500 text-sm">{errors.email} </p>
-              )}
+                {errors.email && touched.email && (
+                  <p className="text-red-500 text-sm">{errors.email} </p>
+                )}
               </div>
               <div className=" w-full relative">
 
@@ -84,7 +88,7 @@ const Login = () => {
               >
                 <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} />
               </i>
-              <div className="">
+              <div className="text-center">
               {errors.password && touched.password && (
                 <p className="text-red-500 text-sm">{errors.password} </p>
               )}

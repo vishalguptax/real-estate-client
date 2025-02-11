@@ -13,9 +13,10 @@ export default function Search() {
     setQuery((prev) => ({ ...prev, type: val }));
   };
   const navigate = useNavigate();
-  const handleSearch =()=>{
+  const handleSearch =(e)=>{
+    e.preventDefault();
     navigate(
-      `/list?type=${query.type}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}&location=${location}`
+     "/listItem"
     )
 
   };
@@ -50,7 +51,14 @@ export default function Search() {
           <input
             type="number"
             name="minPrice"
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={
+            
+              (e) => {
+                e.preventDefault();
+                setQuery(e.target.value)  
+            }
+          }
+            
             min={0}
             max={10000000}
             placeholder="Min Price"

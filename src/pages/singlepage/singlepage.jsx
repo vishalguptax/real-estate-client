@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { singlePostData, userData } from "../../components/Dummydata";
-import Slider from "../Slider/Slider";
+import Slider from "../../components/Slider/Slider";
 
 function SinglePage() {
   const navigate = useNavigate();
