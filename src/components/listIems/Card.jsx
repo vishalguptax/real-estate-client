@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Card = ({ item }) => {
   return (
-    <div className="flex flex-col md:flex-row gap-2 p-4  rounded-lg shadow-sm hover:shadow-md transition-shadow">
+    <div className="flex flex-col md:flex-row gap-2 p-4  rounded-lg shadow-sm hover:shadow-md transition-shadow mb-3 my-3">
       {/* Image Container */}
       <Link to={`singlepage`} className="w-full md:w-1/3 h-[200px]">
         <img

@@ -3,17 +3,7 @@ import { useFormik } from "formik";
 import RegisterSchema from "./schema/registerSchema";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
-import { Link } from "react-router-dom";
-
-const onSubmit = (values, actions) => {
-  console.log("Form data: ", values);
-  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-  existingUsers.push(values);
-
-  localStorage.setItem("users", JSON.stringify(existingUsers));
-  actions.resetForm();
-  alert("Account created successfully!");
-};
+import { Link, useNavigate } from "react-router-dom";
 
 const initialValues = {
   name: "",
@@ -25,6 +15,17 @@ const initialValues = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
+  const onSubmit = (values, actions) => {
+    console.log("Form data: ", values);
+    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+    existingUsers.push(values);
+  
+    localStorage.setItem("users", JSON.stringify(existingUsers));
+    actions.resetForm();
+    alert("Account created successfully!");
+    navigate('/Login')
+  };
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
@@ -44,18 +45,25 @@ const Register = () => {
     });
 
   return (
-    <div className="image-bg">
-      <div className="max-h-[90vh] my-10 overflow-auto flex justify-center w-[80%] ml-auto mr-auto max-w-md bg-white/20 shadow-xl rounded-lg ring-2 ring-black/20">
-        <form className="w-full p-5" onSubmit={handleSubmit} autoComplete="off">
-          <h1 className="text-center text-2xl font-bold text-black mb-4">
+
+    <div className="image-bg  flex items-center justify-center">
+
+      <div className="max-h-fit  flex items-center  overflow-auto custom-scrollbar w-[80%] ml-auto mr-auto max-w-md  bg-white/20 shadow-xl rounded-lg ring-2 ring-black/20 ">
+        <form
+          className="w-full max-h-fit dark:bg-gray-700/20 p-4"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+        >
+          <h1 className="text-center text-2xl font-bold text-black m-4">
             Sign Up
           </h1>
-          <div className="items-center m-3">
-            {/* Name Field */}
+          <div className=" w-full max-h-fit">
             <div className="register-div-input">
               <input
-                className={`login-input ${
-                  errors.name && touched.name ? "border-red-500" : "border-gray-500"
+                className={`login-input mb-2 ${
+                  errors.name && touched.name
+                    ? "border-red-500"
+                    : "border-gray-500"
                 }`}
                 name="name"
                 type="text"
@@ -64,14 +72,18 @@ const Register = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {errors.name && touched.name && <p className="error-message">{errors.name}</p>}
+
+              {errors.name && touched.name && (
+                <p className="error-message">{errors.name}</p>
+              )}
             </div>
 
-            {/* Email Field */}
             <div className="register-div-input">
               <input
-                className={`login-input ${
-                  errors.email && touched.email ? "border-red-500" : "border-gray-500"
+                className={`login-input mb-2 ${
+                  errors.email && touched.email
+                    ? "border-red-500"
+                    : "border-gray-500"
                 }`}
                 name="email"
                 type="email"
@@ -80,14 +92,17 @@ const Register = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {errors.email && touched.email && <p className="error-message">{errors.email}</p>}
+              {errors.email && touched.email && (
+                <p className="error-message">{errors.email}</p>
+              )}
             </div>
 
-            {/* Mobile Number Field */}
             <div className="register-div-input">
               <input
-                className={`login-input ${
-                  errors.mobileNumber && touched.mobileNumber ? "border-red-500" : "border-gray-500"
+                className={`login-input mb-2 ${
+                  errors.mobileNumber && touched.mobileNumber
+                    ? "border-red-500"
+                    : "border-gray-500"
                 }`}
                 name="mobileNumber"
                 type="tel"
@@ -101,63 +116,71 @@ const Register = () => {
               )}
             </div>
 
-<div className="flex gap-8 md:flex-row">
-            <div className="relative register-div-input">
-              <input
-                className={`login-input ${
-                  errors.password && touched.password ? "border-red-500" : "border-gray-500"
-                }`}
-                name="password"
-                type={passwordVisible ? "text" : "password"}
-                placeholder="Enter password..."
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              <i
-                className="absolute right-3 top-8 transform -translate-y-1/2 cursor-pointer"
-                onClick={togglePasswordVisibility}
-              >
-                <FontAwesomeIcon icon={passwordVisible ? faEyeSlash : faEye} />
-              </i>
-              {errors.password && touched.password && <p className="error-message">{errors.password}</p>}
+            <div className="sm:flex-row md:gap-8 md:flex">
+              <div className="relative register-div-input w-1/2">
+                <input
+                  className={`login-input mb-2 ${
+                    errors.password && touched.password
+                      ? "border-red-500"
+                      : "border-gray-500"
+                  }`}
+                  name="password"
+                  type={passwordVisible ? "text" : "password"}
+                  placeholder="Enter password..."
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <i
+                  className="absolute right-3 top-9 transform -translate-y-1/2 cursor-pointer"
+                  onClick={togglePasswordVisibility}
+                >
+                  <FontAwesomeIcon
+                    icon={passwordVisible ? faEyeSlash : faEye}
+                  />
+                </i>
+                {errors.password && touched.password && (
+                  <p className="error-message">{errors.password}</p>
+                )}
+              </div>
+
+              <div className="relative register-div-input w-1/2">
+                <input
+                  className={`login-input mb-2 ${
+                    errors.confirmPassword && touched.confirmPassword
+                      ? "border-red-500"
+                      : "border-gray-500"
+                  }`}
+                  name="confirmPassword"
+                  type={confirmPasswordVisible ? "text" : "password"}
+                  placeholder="Confirm password..."
+                  value={values.confirmPassword}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <i
+                  className="absolute right-3 top-9 transform -translate-y-1/2 cursor-pointer"
+                  onClick={toggleConfirmPasswordVisibility}
+                >
+                  <FontAwesomeIcon
+                    icon={confirmPasswordVisible ? faEyeSlash : faEye}
+                  />
+                </i>
+                {errors.confirmPassword && touched.confirmPassword && (
+                  <p className="error-message">{errors.confirmPassword}</p>
+                )}
+              </div>
             </div>
 
-
-            <div className="relative register-div-input">
-              <input
-                className={`login-input ${
-                  errors.confirmPassword && touched.confirmPassword ? "border-red-500" : "border-gray-500"
-                }`}
-                name="confirmPassword"
-                type={confirmPasswordVisible ? "text" : "password"}
-                placeholder="Confirm password..."
-                value={values.confirmPassword}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              <i
-                className="absolute right-3 top-8 transform -translate-y-1/2 cursor-pointer"
-                onClick={toggleConfirmPasswordVisibility}
-              >
-                <FontAwesomeIcon icon={confirmPasswordVisible ? faEyeSlash : faEye} />
-              </i>
-              {errors.confirmPassword && touched.confirmPassword && (
-                <p className="error-message">{errors.confirmPassword}</p>
-              )}
-            </div>
-</div>
-
-            <button className="login-button mx-auto block mt-4" type="submit">
+            <button className="login-button mx-auto block m-4" type="submit">
               Sign Up!
             </button>
 
-            {/* Login Link */}
-            <p className="text-black text-center mt-3">
+            <p className="text-black text-center m-3">
               Already have an account?
-              <Link to="/Login" className="hover:text-amber-500">
+              <Link to="/Login" className="hover:text-amber-500 underline">
                 {" "}
-                Sign In{" "}
+                Sign In{"  "}
               </Link>
             </p>
           </div>

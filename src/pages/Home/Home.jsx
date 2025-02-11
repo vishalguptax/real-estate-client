@@ -2,7 +2,7 @@ import Search from "./Search";
 
 function Home() {
   return (
-    <div className="flex h-[calc(100vh-100px)] border">
+    <div className="flex h-[calc(100vh-60px)] border">
       {/* Text Container */}
       <div className="flex relative flex-1 gap-2">
         <img

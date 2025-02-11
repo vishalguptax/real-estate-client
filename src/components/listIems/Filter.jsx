@@ -46,6 +46,7 @@ const Filter = () => {
 
   const searchResult = () => {
     let result = [...data];
+    
 
     if (filter.location.trim() !== "") {
       result = result.filter((item) =>
@@ -61,13 +62,13 @@ const Filter = () => {
       result = result.filter((item) => item.price <= filter.maxPrice);
     }
 
-    if (bedRoom > 0) {
-      result = result.filter((item) => item.bedroom === bedRoom);
-    }
+   if (bedRoom > 0) {
+     result = result.filter((item) => item.bedroom === bedRoom);
+   }
 
-    if (result.length === 0) {
-      alert("No results found");
-    }
+   if (result.length === 0) {
+     alert("No results found");
+   }
 
     setFilteredData(result);
   };
@@ -75,6 +76,7 @@ const Filter = () => {
   return (
     <div className="flex flex-col gap-3 p-4">
       <h1 className="text-xl font-light">
+        Search result for <b>{filter.location}</b>
         Search result for <b>{filter.location}</b>
       </h1>
 
@@ -141,6 +143,7 @@ const Filter = () => {
             name="minPrice"
             placeholder="Any"
             value={filter.minPrice}
+            
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
             onChange={(e) => {
               setFilter({ ...filter, minPrice: Number(e.target.value) });
