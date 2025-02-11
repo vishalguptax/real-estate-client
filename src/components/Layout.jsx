@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-import  { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-=======
 
 import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
->>>>>>> c0b2d3eb0723a0279d78ff0e39bc4acada91b55b
 import { useAuth } from "../pages/auth/AuthContext";
 import NavbarButton from "./reusable/NavbarButton";
 

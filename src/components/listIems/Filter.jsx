@@ -1,53 +1,86 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from 'react';
 import { DataContext }  from './DataContext'
+import { useLocation,} from "react-router-dom";
 import Card from "./Card";
 
-const Filter = ({type, location, minPrice, maxPrice}) => {
-  const { data} = useContext(DataContext);
-  const[minValue, setMinValue] = useState(minPrice);
-  const[maxValue, setMaxValue] = useState(maxPrice);
-  const[bedRoom, setBedRoom] = useState();
-  const [city, setCity] = useState(location);
-  const [filteredData, setFilteredData] = useState([...data])
+const Filter = () => {
+  const { data } = useContext(DataContext);
+  const location = useLocation();
   
+  
+  // Extract query parameters from URL
+  const searchParams = new URLSearchParams(location.search);
+  const [bedRoom, setBedRoom]= useState(0)
+  
+  // State for filters (default values from URL or empty)
+  const [filter, setFilter] = useState({
+    type: searchParams.get("type") || "buy",
+    minPrice: Number(searchParams.get("minPrice")) || 0,
+    maxPrice: Number(searchParams.get("maxPrice")) || 1000000,
+    location: searchParams.get("location") || "",
+  });
 
-  const searchResult = () => {
-     let result = [...data];
+  const [filteredData, setFilteredData] = useState([]);
 
-     if( city.trim() !== "" ) {
-        result = result.filter((item) =>
-          item.address.toLowerCase().includes(city.toLowerCase())
+  useEffect(() => {
+    let result = [...data];
+
+    if (filter.location.trim() !== "") {
+      result = result.filter((item) =>
+        item.address.toLowerCase().includes(filter.location.toLowerCase())
       );
-     }
-
-     if(minValue > 0) {
-        result = result.filter((item) => item.price >= minValue);
-     }
-
-     if (maxValue > 0) {
-      result = result.filter((item) => item.price <= maxValue);
     }
 
-    if (bedRoom > 0) {
-      result = result.filter((item) => item.bedroom === bedRoom);
+    if (filter.minPrice > 0) {
+      result = result.filter((item) => item.price >= filter.minPrice);
     }
 
-    if (result.length === 0) {
-      alert("No results found");
+    if (filter.maxPrice > filter.minPrice && filter.maxPrice > 0) {
+      result = result.filter((item) => item.price <= filter.maxPrice);
+    }
+
+    if (filter.type) {
+      result = result.filter((item) => item.type === filter.type);
     }
 
     setFilteredData(result);
-  };
+  }, [data, filter]);
+
+  // Update URL when filters are changed manually
   
+  const searchResult = () => {
+    let result = [...data];
 
+    if( filter.location.trim() !== "" ) {
+       result = result.filter((item) =>
+         item.address.toLowerCase().includes(filter.location.toLowerCase())
+     );
+    }
 
+    if(filter.minPrice > 0) {
+       result = result.filter((item) => item.price >= filter.minPrice);
+    }
+
+    if (filter.maxPrice > filter.minPrice && filter.minPrice > 0) {
+     result = result.filter((item) => item.price <= filter.maxPrice);
+   }
+
+   if (bedRoom > 0) {
+     result = result.filter((item) => item.bedroom === bedRoom);
+   }
+
+   if (result.length === 0) {
+     alert("No results found");
+   }
+
+   setFilteredData(result);
+ };
 
   return (
     <div className="flex flex-col gap-3 p-4">
       <h1 className="text-xl font-light">
-        Search result for <b>London</b>
+        Search result for <b>{filter.location}</b>
       </h1>
 
       {/* Location Input */}
@@ -57,12 +90,13 @@ const Filter = ({type, location, minPrice, maxPrice}) => {
           type="text"
           id="city"
           name="city"
-          value={city}
+          value={filter.location}
+
           placeholder="City Location"
           className="w-full p-2 border border-gray-300 rounded-md text-sm"
           onChange={(e) => {
              e.preventDefault();
-             setCity(e.target.value)
+             setFilter({...filter, location: e.target.value})
           }}
         />
       </div>
@@ -72,7 +106,7 @@ const Filter = ({type, location, minPrice, maxPrice}) => {
         {/* Type */}
         <div className="flex flex-col gap-1">
           <label htmlFor="type" className="text-xs">Type</label>
-          <select id="type" name="type" value={type} className="w-full p-2 border border-gray-300 rounded-md text-sm">
+          <select id="type" name="type" className="w-full p-2 border border-gray-300 rounded-md text-sm">
             <option value="buy">Buy</option>
             <option value="rent">Rent</option>
           </select>
@@ -96,36 +130,28 @@ const Filter = ({type, location, minPrice, maxPrice}) => {
             id="minPrice"
             name="minPrice"
             placeholder="Any"
-            min={1}
-            max={1000000}
-            value={minValue}
+            value={filter.minPrice}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
-            onChange = { (e) => {
-               let value = Number(e.target.value);
-               if(/^\d{0, 10}$/.test(value)) {
-                setMinValue(Number(e.target.value));
-               }   
-            }}
+            onChange = { (e) => { 
+               setFilter({...filter, minPrice: Number(e.target.value)});
+            }
+            }
           />
         </div>
 
         {/* Max Price */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="maxValue" className="text-xs">Max Price</label>
+          <label htmlFor="maxPrice" className="text-xs">Max Price</label>
           <input
             type="number"
-            id="maxValue"
-            name="maxValue"
+            id="maxPrice"
+            name="maxPrice"
             placeholder="Any"
-            value={maxValue} 
-            min = {1} 
-            max = {10000000000}
+            value={filter.maxPrice}  
+            max = {100000}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
             onChange = {(e) => {
-               let value = Number(e.target.value);
-               if(/^\d{0,10}$/.test(value)) {
-                  setMaxValue(value);
-               }
+               setFilter({...filter, maxPrice: Number(e.target.value)});
             }}
           />
         </div>
@@ -134,21 +160,13 @@ const Filter = ({type, location, minPrice, maxPrice}) => {
         <div className="flex flex-col gap-1">
           <label htmlFor="bedroom" className="text-xs">Bedroom</label>
           <input
-            type="number"
+            type="text"
             id="bedroom"
             name="bedroom"
             placeholder="Any"
-            min={1}
-            max={10}
             value={bedRoom}
             onChange={(e) => {
-              let val = Number(e.target.value);
-              if(val > 10) {
-                 alert("Maximum value allowed is 10")
-                 val = 10;
-              }
-              setBedRoom(val);
-
+              setBedRoom(Number(e.target.value));
             }}
             className="w-full p-2 border border-gray-300 rounded-md text-sm"
           />
@@ -160,9 +178,9 @@ const Filter = ({type, location, minPrice, maxPrice}) => {
         </button>
       </div>
 
-      <div className="pb-10">
+      <div className="pb-40 gap-10">
           {filteredData.length > 0 ? (
-             filteredData.map((item) => <Card key = {item.id} item={item}/>)
+             filteredData.map((item) => <Card key = {item.id} item={item} />)
           ) : (
             <p className="text-sm text-gray-500">No result found.</p>
           )}

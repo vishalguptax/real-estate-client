@@ -62,10 +62,3 @@ body {
   md:pt-0 sm:h-5 dark:ml-0 dark:p-2  block;
 }
 
-
-
-
-
-.custom-scrollbar::-webkit-scrollbar {
-    display: none;
-}
