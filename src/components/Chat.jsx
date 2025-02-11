@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import Message from './Chats';
 import Chats from './Chats';
 import MessageCard from './MessageCard';
+import { useState } from 'react';
 
 const Chat = () => {
     const [openChatBox, setOpenChatBox] = useState(true);
