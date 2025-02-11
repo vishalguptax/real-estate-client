@@ -32,14 +32,14 @@ body {
 }
 
 .login-button {
-  @apply text-secondary-foreground bg-primary hover:bg-yellow-500 focus:ring-blue-300 font-medium rounded-full text-sm py-2 text-center w-20 block mx-auto;
+  @apply text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-blue-300 font-medium rounded-full text-sm py-2 text-center w-20 block mx-auto;
 }
 
 
 .login-input {
   @apply text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
   bg-secondary-foreground border-secondary-foreground 
-  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+  dark:bg-black/60 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
   block w-full p-2 mt-5;
 }
 
@@ -54,11 +54,11 @@ body {
 }
 
 .register-div-input {
-  @apply flex flex-col;
+  @apply flex flex-col gap-2;
 }
 
 .error-message {
-  @apply font-serif text-red-800 text-sm md:h-3 ml-3 
+  @apply font-serif text-red-800 text-sm 
   md:pt-0 sm:h-5 dark:ml-0 dark:p-2  block;
 }
 

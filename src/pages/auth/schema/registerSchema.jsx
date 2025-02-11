@@ -5,9 +5,11 @@ const RegisterSchema = yup.object().shape({
   email: yup
     .string()
     .email("Enter your email")
-    .matches(/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/)
+
+    .matches(/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/,"Please enter a valid email")
     // .matches(/^(?=.*[a-z])/,
     // .matches(),
+
     .required("Required"),
   password: yup
     .string()
@@ -15,7 +17,7 @@ const RegisterSchema = yup.object().shape({
     .matches(/^(?=.*[a-z])/, "MUST CONTAIN ONE lower CASE")
     .matches(/^(?=.*[A-Z])/, "Must contain one CAPITAL case")
     .matches(/^(?=.*[0-9])/, "Must contain one number")
-    .matches(/^(?=.*[!@#\$%\^&\*])/, "Must contain one special character")
+    .matches(/^(?=.*[!@#$%^&*])/, "Must contain one special character")
     .required("Required"),
   confirmPassword: yup
     .string()

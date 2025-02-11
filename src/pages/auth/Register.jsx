@@ -3,17 +3,7 @@ import { useFormik } from "formik";
 import RegisterSchema from "./schema/registerSchema";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
-import { Link } from "react-router-dom";
-
-const onSubmit = (values, actions) => {
-  console.log("Form data: ", values);
-  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-  existingUsers.push(values);
-
-  localStorage.setItem("users", JSON.stringify(existingUsers));
-  actions.resetForm();
-  alert("Account created successfully!");
-};
+import { Link, useNavigate } from "react-router-dom";
 
 const initialValues = {
   name: "",
@@ -25,6 +15,17 @@ const initialValues = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
+  const onSubmit = (values, actions) => {
+    console.log("Form data: ", values);
+    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+    existingUsers.push(values);
+  
+    localStorage.setItem("users", JSON.stringify(existingUsers));
+    actions.resetForm();
+    alert("Account created successfully!");
+    navigate('/Login')
+  };
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
@@ -44,17 +45,22 @@ const Register = () => {
     });
 
   return (
-    <div className="image-bg">
-      <div className="max-h-[90vh] my-10 overflow-auto custom-scrollbar flex justify-center w-[80%] ml-auto mr-auto max-w-md bg-white/20 shadow-xl rounded-lg ring-2 ring-black/20">
-        <form className="w-full p-5 dark:bg-gray-700/20" onSubmit={handleSubmit} autoComplete="off">
-          <h1 className="text-center text-2xl font-bold text-black mb-4">
+
+    <div className="image-bg  flex items-center justify-center">
+
+      <div className="max-h-fit  flex items-center  overflow-auto custom-scrollbar w-[80%] ml-auto mr-auto max-w-md  bg-white/20 shadow-xl rounded-lg ring-2 ring-black/20 ">
+        <form
+          className="w-full max-h-fit dark:bg-gray-700/20 p-4"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+        >
+          <h1 className="text-center text-2xl font-bold text-black m-4">
             Sign Up
           </h1>
-          <div className="items-center m-3">
-       
+          <div className=" w-full max-h-fit">
             <div className="register-div-input">
               <input
-                className={`login-input ${
+                className={`login-input mb-2 ${
                   errors.name && touched.name
                     ? "border-red-500"
                     : "border-gray-500"
@@ -66,15 +72,15 @@ const Register = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+
               {errors.name && touched.name && (
                 <p className="error-message">{errors.name}</p>
               )}
             </div>
 
-           
             <div className="register-div-input">
               <input
-                className={`login-input ${
+                className={`login-input mb-2 ${
                   errors.email && touched.email
                     ? "border-red-500"
                     : "border-gray-500"
@@ -91,10 +97,9 @@ const Register = () => {
               )}
             </div>
 
-         
             <div className="register-div-input">
               <input
-                className={`login-input ${
+                className={`login-input mb-2 ${
                   errors.mobileNumber && touched.mobileNumber
                     ? "border-red-500"
                     : "border-gray-500"
@@ -111,10 +116,10 @@ const Register = () => {
               )}
             </div>
 
-            <div className="flex gap-8 md:flex-row">
-              <div className="relative register-div-input">
+            <div className="sm:flex-row md:gap-8 md:flex">
+              <div className="relative register-div-input w-1/2">
                 <input
-                  className={`login-input ${
+                  className={`login-input mb-2 ${
                     errors.password && touched.password
                       ? "border-red-500"
                       : "border-gray-500"
@@ -139,9 +144,9 @@ const Register = () => {
                 )}
               </div>
 
-              <div className="relative register-div-input">
+              <div className="relative register-div-input w-1/2">
                 <input
-                  className={`login-input ${
+                  className={`login-input mb-2 ${
                     errors.confirmPassword && touched.confirmPassword
                       ? "border-red-500"
                       : "border-gray-500"
@@ -167,15 +172,14 @@ const Register = () => {
               </div>
             </div>
 
-            <button className="login-button mx-auto block mt-4" type="submit">
+            <button className="login-button mx-auto block m-4" type="submit">
               Sign Up!
             </button>
 
-        
-            <p className="text-black text-center mt-3">
+            <p className="text-black text-center m-3">
               Already have an account?
               <Link to="/Login" className="hover:text-amber-500 underline">
-                 {" "}
+                {" "}
                 Sign In{"  "}
               </Link>
             </p>
