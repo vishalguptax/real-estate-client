@@ -74,7 +74,7 @@ const Login = () => {
 
               <div className="">
                 {errors.email && touched.email && (
-                  <p className="text-red-500 text-sm">{errors.email} </p>
+                  <p className="error-message">{errors.email} </p>
                 )}
               </div>
               <div className=" w-full relative ">
@@ -103,7 +103,7 @@ const Login = () => {
 
                 <div className="text-center">
                   {errors.password && touched.password && (
-                    <p className="text-red-500 text-sm">{errors.password} </p>
+                    <p className="error-message">{errors.password} </p>
                   )}
                 </div>
               </div>

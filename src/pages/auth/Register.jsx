@@ -20,11 +20,11 @@ const Register = () => {
     console.log("Form data: ", values);
     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
     existingUsers.push(values);
-  
+
     localStorage.setItem("users", JSON.stringify(existingUsers));
     actions.resetForm();
     alert("Account created successfully!");
-    navigate('/Login')
+    navigate("/Login");
   };
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
@@ -46,13 +46,16 @@ const Register = () => {
 
   return (
     <div className="form-bg">
-      <div className="max-h-[90vh] my-10 overflow-auto custom-scrollbar flex justify-center w-[80%] ml-auto mr-auto max-w-md bg-white/20 shadow-xl rounded-lg ring-2 ring-black/20">
-        <form className="w-full p-5" onSubmit={handleSubmit} autoComplete="off">
+      <div className=" max-h-[90vh] my-10 overflow-auto custom-scrollbar flex justify-center w-[80%] ml-auto mr-auto max-w-md bg-white/20 shadow-xl rounded-lg ring-2 ring-black/20">
+        <form
+          className="w-full  p-5"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+        >
           <h1 className="text-center text-2xl font-bold text-black m-4">
             Sign Up
           </h1>
-          <div className="items-center m-3">
-       
+          <div className=" m-3">
             <div className="register-div-input">
               <input
                 className={`form-input ${
@@ -72,7 +75,6 @@ const Register = () => {
               )}
             </div>
 
-           
             <div className="register-div-input">
               <input
                 className={`form-input ${
@@ -92,7 +94,6 @@ const Register = () => {
               )}
             </div>
 
-         
             <div className="register-div-input">
               <input
                 className={`form-input ${
@@ -127,10 +128,7 @@ const Register = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                <i
-                  className="eye-icon"
-                  onClick={togglePasswordVisibility}
-                >
+                <i className="eye-icon" onClick={togglePasswordVisibility}>
                   <FontAwesomeIcon
                     icon={passwordVisible ? faEyeSlash : faEye}
                   />
@@ -172,11 +170,10 @@ const Register = () => {
               Sign Up!
             </button>
 
-        
             <p className="text-black text-center mt-3">
               Already have an account?
               <Link to="/Login" className="font-bold hover:text-xl">
-                 {" "}
+                {" "}
                 Sign In{"  "}
               </Link>
             </p>
