@@ -66,3 +66,7 @@ font-bold hover:bg-primary-foreground
 .navbar-btn{
   @apply relative px-4 py-2 bg-primary rounded-lg hover:bg-primary-foreground cursor-pointer hover:scale-105
 }
+
+.navbar-btn2{
+  @apply py-2 rounded-lg hover:scale-105 transition px-4 hover:bg-primary-foreground/20 mb-2
+}

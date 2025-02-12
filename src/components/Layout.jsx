@@ -108,21 +108,21 @@ const Layout = () => {
           </button>
           <Link
             to="/"
-            className="py-4 hover:scale-105 transition p-2 hover:bg-gray-100"
+            className="navbar-btn2"
             onClick={() => setOpen(false)}
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="py-4 hover:scale-105 transition p-2 hover:bg-gray-100"
+            className="navbar-btn2"
             onClick={() => setOpen(false)}
           >
             About
           </Link>
           <Link
             to="/contact"
-            className="py-4 hover:scale-105 transition p-2 hover:bg-gray-100"
+            className="navbar-btn2"
             onClick={() => setOpen(false)}
           >
             Contact
