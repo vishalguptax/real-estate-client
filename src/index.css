@@ -64,7 +64,7 @@ body {
 }
 
 .navbar-btn{
-  @apply relative px-4 py-2 bg-primary-foreground rounded-lg hover:bg-primary-foreground cursor-pointer hover:scale-105
+  @apply relative px-4 py-2 bg-primary rounded-lg cursor-pointer hover:scale-105
 }
 
 .navbar-btn2{
