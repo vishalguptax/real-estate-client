@@ -6,8 +6,8 @@ body {
 }
 
 @theme {
-  --color-primary: #6366f1;
-  --color-primary-foreground: #eef2ff;
+  --color-primary: #b4877b;
+  --color-primary-foreground: #b4977c;
   --color-secondary: #f87171;
   --color-secondary-foreground: #fefefe;
 }
@@ -22,10 +22,6 @@ body {
   bg-cover bg-center bg-no-repeat
    bg-[url(https://images.pexels.com/photos/4050430/pexels-photo-4050430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)]
 }
-.login-button {
-  @apply text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-blue-300 font-medium rounded-full text-sm py-2 text-center w-20 block mx-auto;
-}
-
 .form-input{
   @apply text-secondary-foreground text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
   bg-secondary-foreground border-secondary-foreground 
@@ -58,10 +54,10 @@ body {
 }
 
 .form-button{
-  @apply bg-amber-500 cursor-pointer text-secondary-foreground rounded-lg w-full mt-3 p-2 text-sm 
-font-bold
+  @apply bg-[#b4877b] cursor-pointer text-secondary-foreground rounded-lg w-full mt-3 p-2 text-sm 
+font-bold hover:bg-primary-foreground
 }
 
 .btn{
-  @apply rounded-sm bg-amber-500 text-white
+  @apply rounded-lg bg-[#b4877b] hover:bg-primary-foreground text-white font-bold p-2 px-4
 }

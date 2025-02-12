@@ -52,13 +52,13 @@ const Layout = () => {
           {user ? (
             <div className="flex items-center gap-4 font-xl">
               <NavbarButton
-                className="relative px-4 py-2 bg-yellow-400 rounded-lg hover:bg-amber-200 cursor-pointer hover:scale-105"
+                className="relative px-4 py-2 btn rounded-lg hover:bg-primary-foreground cursor-pointer hover:scale-105"
                 onClick={() => navigate("/profile")}
               >
                 Profile
               </NavbarButton>
               <NavbarButton
-                className="relative px-4 py-2 bg-yellow-400 rounded-lg hover:bg-amber-200 cursor-pointer hover:scale-105"
+                className="relative px-4 py-2 bg-primary rounded-lg hover:bg-primary-foreground cursor-pointer hover:scale-105"
                 onClick={() => {
                   navigate("/login");
                   logout();
@@ -70,7 +70,7 @@ const Layout = () => {
           ) : (
             <>
               <NavbarButton
-                className="px-4 py-2 hover:scale-105 bg-yellow-400 rounded-lg cursor-pointer transition hidden md:block"
+                className="btn"
                 onClick={() => {
                   navigate("/login");
                 }}
@@ -78,7 +78,7 @@ const Layout = () => {
                 Sign In
               </NavbarButton>
               <NavbarButton
-                className="px-4 py-2 hover:scale-105 bg-yellow-400 rounded-lg cursor-pointer transition hidden md:block"
+                className="btn"
                 onClick={() => {
                   navigate("/register");
                 }}
@@ -101,7 +101,7 @@ const Layout = () => {
       {open && (
         <div className="absolute top-0 right-0 w-1/2 h-screen bg-gray-200 z-999 text-black flex flex-col items-center justify-center text-lg transition-transform transform translate-x-0">
           <button
-            className="absolute top-5 right-5 text-white text-3xl"
+            className="absolute top-5 right-5 text-black text-3xl"
             onClick={() => setOpen(false)}
           >
             ×
@@ -131,14 +131,14 @@ const Layout = () => {
             <>
               <Link
                 to="/profile"
-                className="relative px-6 py-2 m-2 bg-yellow-400 rounded-lg hover:bg-amber-200"
+                className="relative px-6 py-2 m-2 bg-primary rounded-lg hover:bg-primary-foreground"
                 onClick={() => setOpen(false)}
               >
                 Profile
               </Link>
               <Link
                 to="/login"
-                className="relative px-4 py-2 m-2 bg-yellow-400 rounded-lg hover:bg-amber-200"
+                className="relative px-4 py-2 m-2 bg-primary rounded-lg hover:bg-primary-foreground"
                 onClick={logout}
               >
                 Sign out
@@ -148,14 +148,14 @@ const Layout = () => {
             <>
               <Link
                 to="/login"
-                className="px-6 py-2 m-2 bg-yellow-400 rounded-lg hover:bg-amber-200 transition"
+                className="px-6 py-2 m-2 bg-primary rounded-lg hover:bg-primary-foreground transition"
                 onClick={() => setOpen(false)}
               >
                 Sign in
               </Link>
               <Link
                 to="/register"
-                className="px-5 py-2 m-2 bg-yellow-400 rounded-lg hover:bg-amber-200 transition"
+                className="px-5 py-2 m-2 bg-primary rounded-lg hover:bg-primary-foreground transition"
                 onClick={() => setOpen(false)}
               >
                 Sign up
