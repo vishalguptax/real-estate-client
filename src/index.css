@@ -3,12 +3,13 @@
 body {
   max-width: 1500px;
   height: 100vh;
+  font-family: "Inter", serif;
 }
 
 @theme {
-  --color-primary: #b4877b;
-  --color-primary-foreground: #b4977c;
-  --color-secondary: #f87171;
+  --color-primary: #FFBF00;
+  --color-primary-foreground: #6f4e37;
+  --color-secondary: #b4877b;
   --color-secondary-foreground: #fefefe;
 }
 
@@ -45,19 +46,27 @@ body {
 }
 
 .eye-icon{
-  @apply absolute right-3 top-9 transform -translate-y-1/2 cursor-pointer
+  @apply absolute right-3 top-9 sm:top-10 transform -translate-y-1/2 cursor-pointer
 }
 
 .error-message {
   @apply  text-red-800 text-sm bg-white/20 font-bold rounded-sm
-  md:pt-0 sm:h-5 dark:ml-0  block md:h-5 
+  md:pt-0 sm:h-5 dark:ml-0  block md:h-5
 }
 
 .form-button{
-  @apply bg-[#b4877b] cursor-pointer text-secondary-foreground rounded-lg w-full mt-3 p-2 text-sm 
-font-bold hover:bg-primary-foreground
+  @apply bg-primary-foreground cursor-pointer text-secondary-foreground rounded-lg w-full mt-3 p-2 text-sm 
+font-bold hover:bg-primary
 }
 
 .btn{
-  @apply rounded-lg bg-[#b4877b] hover:bg-primary-foreground text-white font-bold p-2 px-4
+  @apply rounded-lg bg-primary cursor-pointer hover:bg-primary-foreground text-white font-bold p-2 px-4
+}
+
+.navbar-btn{
+  @apply relative px-4 py-2 bg-primary rounded-lg hover:bg-primary-foreground cursor-pointer hover:scale-105
+}
+
+.navbar-btn2{
+  @apply py-2 rounded-lg hover:scale-105 transition px-4 hover:bg-primary-foreground/20 mb-2
 }
