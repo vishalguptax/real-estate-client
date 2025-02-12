@@ -52,7 +52,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="image-bg flex items-center justify-center">
+      <div className="form-bg flex items-center justify-center">
         <form onSubmit={handleSubmit} className=" max-h-fit">
           <div className="isolate aspect-video w-96 rounded-xl bg-white/20  ring-2 shadow-xl ring-black/20 p-4">
             <h1 className="text-center text-2xl font-bold text-black mb-4">
@@ -63,8 +63,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 placeholder="Enter email id"
-                className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-4 
-                ${
+                className={`form-input ${
                   errors.email && touched.email
                     ? "border-red-500"
                     : "dark:border-gray-600 "
@@ -83,7 +82,7 @@ const Login = () => {
                   type={passwordVisible ? "text" : "password"}
                   name="password"
                   placeholder="password"
-                  className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-4
+                  className={`form-input
                 ${
                   errors.email && touched.email
                     ? "border-red-500"
@@ -94,7 +93,7 @@ const Login = () => {
                 />
 
                 <i
-                  className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                  className="eye-icon"
                   onClick={togglePasswordVisibility}
                 >
                   <FontAwesomeIcon
@@ -109,7 +108,7 @@ const Login = () => {
                 </div>
               </div>
 
-              <button type="submit" className="login-button m-4">
+              <button type="submit" className="form-button">
                 Login
               </button>
             </div>
