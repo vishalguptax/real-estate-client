@@ -46,7 +46,7 @@ body {
 }
 
 .eye-icon{
-  @apply absolute right-3 top-9 transform -translate-y-1/2 cursor-pointer
+  @apply absolute right-3 top-9 sm:top-10 transform -translate-y-1/2 cursor-pointer
 }
 
 .error-message {
