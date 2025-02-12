@@ -9,7 +9,7 @@ const Layout = () => {
   const { user, logout } = useAuth();
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen w-screen">
       {/* Navbar */}
       <nav className="flex items-center justify-between h-[60px] z-999 px-8 bg-gray-200">
         <div className="flex items-center space-x-4">
