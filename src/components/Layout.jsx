@@ -52,13 +52,13 @@ const Layout = () => {
           {user ? (
             <div className="flex items-center gap-4 font-xl">
               <NavbarButton
-                className="relative px-4 py-2 btn rounded-lg hover:bg-primary-foreground cursor-pointer hover:scale-105"
+                className="navbar-btn"
                 onClick={() => navigate("/profile")}
               >
                 Profile
               </NavbarButton>
               <NavbarButton
-                className="relative px-4 py-2 bg-primary rounded-lg hover:bg-primary-foreground cursor-pointer hover:scale-105"
+                className="navbar-btn"
                 onClick={() => {
                   navigate("/login");
                   logout();
@@ -92,7 +92,7 @@ const Layout = () => {
         {/* Mobile Menu */}
         <div className="sm:block lg:hidden">
           <button onClick={() => setOpen(!open)}>
-            <img src="/menu.png" alt="Menu" className="w-9 h-9" />
+            <img src="/menu.png" alt="Menu" className="w-9 h-9 cursor-pointer" />
           </button>
         </div>
       </nav>
@@ -101,7 +101,7 @@ const Layout = () => {
       {open && (
         <div className="absolute top-0 right-0 w-1/2 h-screen bg-gray-200 z-999 text-black flex flex-col items-center justify-center text-lg transition-transform transform translate-x-0">
           <button
-            className="absolute top-5 right-5 text-black text-3xl"
+            className="absolute top-5 right-5 text-black text-3xl cursor-pointer"
             onClick={() => setOpen(false)}
           >
             ×

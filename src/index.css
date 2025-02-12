@@ -3,6 +3,7 @@
 body {
   max-width: 1500px;
   height: 100vh;
+  font-family: "Inter", serif;
 }
 
 @theme {
@@ -59,5 +60,9 @@ font-bold hover:bg-primary-foreground
 }
 
 .btn{
-  @apply rounded-lg bg-[#b4877b] hover:bg-primary-foreground text-white font-bold p-2 px-4
+  @apply rounded-lg bg-[#b4877b] cursor-pointer hover:bg-primary-foreground text-white font-bold p-2 px-4
+}
+
+.navbar-btn{
+  @apply relative px-4 py-2 bg-primary rounded-lg hover:bg-primary-foreground cursor-pointer hover:scale-105
 }
