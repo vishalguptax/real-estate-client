@@ -7,8 +7,8 @@ body {
 }
 
 @theme {
-  --color-primary: #FFBF00;
-  --color-primary-foreground: #6f4e37;
+  --color-primary: #EAB308;
+  --color-primary-foreground: #b4877b;
   --color-secondary: #b4877b;
   --color-secondary-foreground: #fefefe;
 }
@@ -27,7 +27,7 @@ body {
   @apply text-secondary-foreground text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
   bg-secondary-foreground border-secondary-foreground 
   dark:bg-black/60 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
-  block w-full font-bold p-2 mt-5;
+  block w-full p-2 mt-5;
 }
 
 
@@ -51,22 +51,29 @@ body {
 
 .error-message {
   @apply  text-red-800 text-sm bg-white/20 font-bold rounded-sm
-  md:pt-0 sm:h-5 dark:ml-0  block md:h-5
+  md:pt-0 sm:h-5 dark:ml-0 md:h-5
 }
 
 .form-button{
-  @apply bg-primary-foreground cursor-pointer text-secondary-foreground rounded-lg w-full mt-3 p-2 text-sm 
-font-bold hover:bg-primary
+  @apply bg-primary-foreground cursor-pointer text-black rounded-lg w-full mt-3 p-2 text-sm
+ hover:bg-primary
 }
 
 .btn{
-  @apply rounded-lg bg-primary cursor-pointer hover:bg-primary-foreground text-white font-bold p-2 px-4
+  @apply rounded-lg bg-primary cursor-pointer  text-white font-bold p-2 px-4
 }
 
 .navbar-btn{
-  @apply relative px-4 py-2 bg-primary rounded-lg hover:bg-primary-foreground cursor-pointer hover:scale-105
+  @apply relative px-4 py-2 bg-primary-foreground rounded-lg hover:bg-primary-foreground cursor-pointer hover:scale-105
 }
 
 .navbar-btn2{
   @apply py-2 rounded-lg hover:scale-105 transition px-4 hover:bg-primary-foreground/20 mb-2
+}
+
+.link-bg{
+  @apply text-black hover:text-gray-500 hover:rounded-2xl p-2 hover:bg-gray-100
+}
+.dropdown-bg{
+  @apply relative px-6 py-2 m-2 bg-primary rounded-lg 
 }
