@@ -20,7 +20,7 @@ const Layout = () => {
         <div className="hidden md:flex space-x-15">
           <Link
             to="/"
-            className="text-black hover:text-gray-500 hover:rounded-2xl p-2 hover:bg-gray-100"
+            className="link-bg"
           >
             Home
           </Link>
@@ -31,13 +31,13 @@ const Layout = () => {
                 "About page is under construction. We are redirecting you to home page."
               )
             }
-            className="text-black hover:text-gray-500 hover:rounded-2xl p-2 hover:bg-gray-100"
+            className="link-bg"
           >
             About
           </Link>
           <Link
             to="/"
-            className="text-black hover:text-gray-500 hover:rounded-2xl p-2 hover:bg-gray-100"
+            className="link-bg"
             onClick={() =>
               alert(
                 "About page is under construction. We are redirecting you to home page."
@@ -131,14 +131,14 @@ const Layout = () => {
             <>
               <Link
                 to="/profile"
-                className="relative px-6 py-2 m-2 bg-primary rounded-lg hover:bg-primary-foreground"
+                className="dropdown-bg"
                 onClick={() => setOpen(false)}
               >
                 Profile
               </Link>
               <Link
                 to="/login"
-                className="relative px-4 py-2 m-2 bg-primary rounded-lg hover:bg-primary-foreground"
+                className="dropdown-bg"
                 onClick={logout}
               >
                 Sign out
@@ -148,14 +148,14 @@ const Layout = () => {
             <>
               <Link
                 to="/login"
-                className="px-6 py-2 m-2 bg-primary rounded-lg hover:bg-primary-foreground transition"
+                className="dropdown-bg"
                 onClick={() => setOpen(false)}
               >
                 Sign in
               </Link>
               <Link
                 to="/register"
-                className="px-5 py-2 m-2 bg-primary rounded-lg hover:bg-primary-foreground transition"
+                className="dropdown-bg"
                 onClick={() => setOpen(false)}
               >
                 Sign up
