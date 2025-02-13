@@ -14,9 +14,9 @@ function App() {
       <Route element={<Layout />}>
         <Route element={<ProtectedRoutes />}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/singlePage" element={<SinglePage />}></Route>
           <Route path="/listItem" element={<ListItem />} />
           <Route path="/listItem/singlePage" element={<SinglePage />}></Route>
-          <Route path="/profile/singlePage" element={<SinglePage />}></Route>
         </Route>
 
         <Route path="/" element={<Home />} />

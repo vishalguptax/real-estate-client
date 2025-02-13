@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Card = ({ item }) => {
   return (
@@ -7,7 +7,7 @@ const Card = ({ item }) => {
       <Link to={`singlepage`} className="w-full md:w-1/3 h-[200px]">
         <img
           src={item?.images}
-          alt={item.title}
+          // alt={item?.title}
           className="w-full h-full object-cover rounded-lg"
         />
       </Link>
@@ -16,7 +16,8 @@ const Card = ({ item }) => {
       <div className="flex flex-col justify-between w-full md:w-2/3 gap-3">
         {/* Title */}
         <h2 className="text-lg font-bold text-gray-700 transition-all duration-300 hover:text-black">
-          <Link to={`/${item.id}`}>{item.title}</Link>
+          {/* <Link to={`/${item.id}`}>{item.title}</Link> */}
+          <Link to={`singlepage`}>{item.title}</Link>
         </h2>
 
         {/* Address */}

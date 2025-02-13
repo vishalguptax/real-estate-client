@@ -56,11 +56,11 @@ body {
 
 .form-button{
   @apply bg-primary-foreground cursor-pointer text-black rounded-lg w-full mt-3 p-2 text-sm
- hover:bg-primary
+ hover:bg-primary hover:scale-105
 }
 
 .btn{
-  @apply rounded-lg bg-primary cursor-pointer  text-white font-bold p-2 px-4
+  @apply rounded-lg bg-primary cursor-pointer hover:scale-105  text-white font-bold p-2 px-4
 }
 
 .navbar-btn{
@@ -86,4 +86,17 @@ body {
 }
 .chat-input{
   @apply border-none bg-primary-foreground/10 flex-3 outline-none sm:py-3 sm:px-4 rounded-l-[10px] resize-none
+}
+
+.search-input{
+  @apply flex-1 p-3 text-gray-50 border border-r-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500
+}
+.search-min-price{
+  @apply flex-1 p-3 border text-gray-50 border-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 w-full sm:w-auto
+}
+.search-city-location{
+  @apply flex-1 p-3  border border-gray-400 hover:border-[#9b9b9b] rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500 w-full sm:w-auto
+}
+.search-button{
+  @apply  bg-primary-foreground lg:bg-primary lg:hover:bg-amber-300 hover:scale-105 text-black px-6 py-3 rounded-lg cursor-pointer flex items-center justify-center transition w-full sm:w-auto
 }

@@ -173,8 +173,8 @@ const Filter = () => {
         </div>
 
         {/* Search Button */}
-        <button onClick = {searchResult}className="w-full p-2 bg-yellow-400 rounded-lg flex justify-center items-center hover:bg-yellow-500 transition cursor-pointer">
-          <img src="/search.png" alt="Search" className="w-6 h-6" />
+        <button onClick = {searchResult}className="search-button border border-primary w-3 p-4 h-9 mt-5">
+          <img src="/search.png" alt="Search" className="w-4 h-4" />
         </button>
       </div>
 
