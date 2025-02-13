@@ -43,7 +43,10 @@ const Filter = () => {
     if (filter.type) {
       result = result.filter((item) => item.type === filter.type);
     }
-
+    
+    if(bedRoom > 0) {
+       result = result.filter((item) => item.bedRoom === bedRoom)
+    }
     setFilteredData(result);
   }, [data, filter]);
 
@@ -164,6 +167,7 @@ const Filter = () => {
             id="bedroom"
             name="bedroom"
             placeholder="Any"
+
             value={bedRoom}
             onChange={(e) => {
               setBedRoom(Number(e.target.value));
@@ -173,7 +177,7 @@ const Filter = () => {
         </div>
 
         {/* Search Button */}
-        <button onClick = {searchResult}className="w-full p-2 bg-yellow-400 rounded-lg flex justify-center items-center hover:bg-yellow-500 transition cursor-pointer">
+        <button onClick = {searchResult}className="w-full p-2 bg-yellow-400 rounded-lg flex justify-center items-center hover:bg-primary-foreground transition cursor-pointer">
           <img src="/search.png" alt="Search" className="w-6 h-6" />
         </button>
       </div>

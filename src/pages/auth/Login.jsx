@@ -7,12 +7,16 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 // import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
+import { ToastContainer, toast } from 'react-toastify';
+
 const initialValues = {
   email: "",
   password: "",
 };
 
 const Login = () => {
+
+   
   const { login } = useAuth();
   const [passwordVisible, setPasswordVisible] = useState(false);
   // const navigate = useNavigate("");
@@ -20,6 +24,9 @@ const Login = () => {
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
   };
+  
+  const notify = () => toast("Succesfull!");
+ 
 
   const { values, errors, touched, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
@@ -39,7 +46,7 @@ const Login = () => {
           // localStorage.setItem("loggedInUser",JSON.stringify(verifyVal))
           login(verifyVal);
           loginSuccessful = true;
-          alert("login successful");
+           {notify}
           // navigate("/")
           break;
         }

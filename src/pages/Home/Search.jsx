@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 const types = ["buy", "rent"];
 
 export default function Search() {
+  
   const [location, setLocation] = useState("");
   const [query, setQuery] = useState({
     type: "buy",
@@ -24,6 +25,7 @@ export default function Search() {
     }).toString();
     navigate(`/ListItem?${searchParams}`);
   };
+
   return (
     <div className=" w-[100%] absolute bottom-[30%] md:bottom-[10%] px-4 z-9 m-auto h-[30%]">
       <div className="w-[70%] md:max-w-xl lg:max-w-2xl bg-black/60 backdrop-blur-lg text-white shadow-md rounded-lg p-4 mx-auto ">
@@ -35,7 +37,7 @@ export default function Search() {
               onClick={() => switchType(type)}
               className={`px-3 py-3 md:w-1/6 text-center border border-gray-400 cursor-pointer ${
                 query.type === type
-                  ? "bg-[#b4877b] text-white shadow-lg"
+                  ? "  bg-yellow-400  items-center hover:bg-primary-foreground transition "
                   : "bg-transparent border-gray-400 hover:bg-gray-700"
               } first:rounded-l-lg last:rounded-r-lg `}
             >
@@ -76,7 +78,7 @@ export default function Search() {
           <button
             type="button"
             onClick={handleSearch}
-            className="bg-[#b4877b] hover:bg-[#4b4c4e] text-black px-6 py-3 rounded-lg cursor-pointer flex items-center justify-center transition w-full sm:w-auto"
+            className="w-full p-2 bg-yellow-400 rounded-lg flex justify-center items-center hover:bg-primary-foreground transition cursor-pointer"
           >
             <img src="./search.png" alt="Search" className="w-6 h-6" />
           </button>
