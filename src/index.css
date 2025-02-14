@@ -8,7 +8,7 @@ body {
 
 @theme {
   --color-primary: #EAB308;
-  --color-primary-foreground: #b4877b;
+  --color-primary-foreground: #EAB308;
   --color-secondary: #b4877b;
   --color-secondary-foreground: #fefefe;
 }
